@@ -16,6 +16,10 @@ import SpriteKit
 class TopViewController: UIViewController  {
     
     
+    @IBAction func pushMyPage(sender: AnyObject) {
+        performSegueWithIdentifier("mypageViewSegue", sender: self)
+    }
+    
     // MARK: - Segue
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         //nothing
