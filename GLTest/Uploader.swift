@@ -61,8 +61,15 @@ class Uploader : NSObject , NSURLSessionDelegate {
         self.status  = status
     }
     
+    init(message : String) {
+        self.message = message
+        self.status = MessageStatus.Text
+    }
+    
     func upload() {
         //アップロードする内容に応じて準備
+        let sensor = Sensor.sharedInstance
+        
         if self.status == MessageStatus.Image {
             readyImageData()
         } else if self.status == MessageStatus.Video {
@@ -78,7 +85,8 @@ class Uploader : NSObject , NSURLSessionDelegate {
         
         
         //リクエストの生成
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: "http://192.168.11.35:3000/upload")!)
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: Settings.serverURL + "/upload")!)
+
         let boundary = "-miraibound"
         var httpBody : NSMutableData = NSMutableData()
         httpBody.appendData(String("--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -93,17 +101,32 @@ class Uploader : NSObject , NSURLSessionDelegate {
         httpBody.appendData(String("\(self.message)\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         httpBody.appendData(String("--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         
+        httpBody.appendData(String("Content-Disposition: from-data; name=\"latitude\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        httpBody.appendData(String("\(sensor.latitude)\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        httpBody.appendData(String("--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        httpBody.appendData(String("Content-Disposition: from-data; name=\"longitude\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        httpBody.appendData(String("\(sensor.longitude)\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        httpBody.appendData(String("--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        
         //          バイナリデータ
-        httpBody.appendData(String("Content-Disposition: from-data; name=\"fileup\"").dataUsingEncoding(NSUTF8StringEncoding)!)
-        httpBody.appendData(String("filename=\"\(filename)\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        httpBody.appendData(String("Content-Type:\(type)\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        httpBody.appendData(data)
-        httpBody.appendData(String("\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
-        httpBody.appendData(String("--\(boundary)--\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        if self.status == MessageStatus.Image || self.status == MessageStatus.Video {
+            httpBody.appendData(String("Content-Disposition: from-data; name=\"fileup\"").dataUsingEncoding(NSUTF8StringEncoding)!)
+            httpBody.appendData(String("filename=\"\(filename)\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            httpBody.appendData(String("Content-Type:\(type)\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            httpBody.appendData(data)
+            httpBody.appendData(String("\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+            httpBody.appendData(String("--\(boundary)--\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
+        }
         
         request.HTTPMethod = "POST"
         request.HTTPBody  = httpBody
         request.setValue("multipart/form-data ; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        //          クッキーの追加
+        let cookies = readCookie()
+        let header  : NSDictionary = NSHTTPCookie.requestHeaderFieldsWithCookies(cookies)
+        request.allHTTPHeaderFields = header as [NSObject : AnyObject]
         
         //タスクの生成・アップロード！
         println("uploading")
@@ -181,7 +204,32 @@ class Uploader : NSObject , NSURLSessionDelegate {
     }
     
     private func readyTextData() {
-        //Nothing
+        
     }
+    
+    private func readCookie() -> [NSHTTPCookie] {
+        let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var sessionIDCookies = userDefaults.stringForKey("sessionID")
+        
+        if sessionIDCookies == nil {
+            println("クッキーがなかったので")
+            sessionIDCookies = ""
+        }
+        
+        let properties : NSDictionary = NSDictionary(objectsAndKeys:
+            Settings.serverURL    , NSHTTPCookieDomain ,
+            "/"                   , NSHTTPCookiePath   ,
+            "Session-Cookie"      , NSHTTPCookieName   ,
+            sessionIDCookies! , NSHTTPCookieValue
+        )
+        
+        let cookie  :  NSHTTPCookie  = NSHTTPCookie(properties: properties as [NSObject : AnyObject])!
+        let cookies : [NSHTTPCookie] = [
+            cookie
+        ]
+        
+        return cookies
+    }
+
 
 }

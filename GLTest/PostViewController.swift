@@ -131,12 +131,17 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
             break
         }
         
+        //動画・画像のアップロード
         var uploader : Uploader!
         if imageData != nil && imageAsset != nil {
             uploader = Uploader(asset: self.imageAsset!  , message: textView.text, status: status)
             uploader.upload()
         } else if imageRawData != nil {
             uploader = Uploader(data: self.imageRawData! , message: textView.text, status: status)
+            uploader.upload()
+        } else {
+            println("only text upload")
+            uploader = Uploader(message: textView.text)
             uploader.upload()
         }
         

@@ -59,7 +59,7 @@ class User : NSObject , NSURLSessionDelegate  {
             
             for cookie : NSHTTPCookie in cookies {
                 if cookie.name == "Session-Cookie" {
-                    println(cookie.value)
+                    println("\(cookie.value) を受け取ったので保存します")
                 
                     let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
                     userDefaults.setObject(cookie.value , forKey: "sessionID")
