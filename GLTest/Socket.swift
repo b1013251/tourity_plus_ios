@@ -22,11 +22,14 @@ class Socket{
     var latitude   : Double
     var longitude  : Double
     
+    //Singleton
+    static let sharedInstance = Socket()
     
-    init(urlstr : String , lat : Double , lon : Double) {
-        latitude  = lat
-        longitude = lon
-        self.socket = SocketIOClient(socketURL: urlstr , options: nil)
+    private init() {
+        let sensor : Sensor = Sensor.sharedInstance
+        latitude  = sensor.latitude
+        longitude = sensor.longitude
+        self.socket = SocketIOClient(socketURL: Settings.socketURL , options: nil)
         
         self.socket.on("connect" ,callback: { data , ack in
             println("socket connected")
@@ -35,14 +38,26 @@ class Socket{
         
         self.socket.on("message_bubbles", callback: {data , ack in
             if let realData = data as? [NSDictionary] {
-                if self.isNotExist(realData[0].objectForKey("student_id") as! Int!) {
+                if self.isNotExist(realData[0].objectForKey("post_id") as! Int!) {
                     self.bubblePool.append(realData[0])
-                    let poi : POI = POI(latitude: realData[0].objectForKey("latitude") as! Double , longitude: realData[0].objectForKey("longitude") as! Double ,
-                        altitude: realData[0].objectForKey("altitude") as! Double ,  message: realData[0].objectForKey("message") as! String)
+                    let poi : POI = POI(
+                        post_id   : realData[0].objectForKey("post_id")   as! Int,
+                        latitude  : realData[0].objectForKey("latitude")  as! Double ,
+                        longitude : realData[0].objectForKey("longitude") as! Double ,
+                        altitude  : realData[0].objectForKey("altitude")  as! Double ,
+                        message   : realData[0].objectForKey("message")   as! String)
                     self.delegate.createBubble(poi)
                 }
             }
         })
+        
+        self.socket.on("response_image", callback: {data , ack in
+            println("get image")
+            if let readData = data as? [NSDictionary] {
+                println( readData[0].objectForKey("message") as! String )
+            }
+        })
+        
         self.socket.connect()
     }
     
@@ -63,7 +78,7 @@ class Socket{
         
         var exist = true
         for (var i = 0 ; i < self.bubblePool.count ; i++) {
-            exist = exist && !( ( (self.bubblePool[i] as NSDictionary).objectForKey("student_id") as! Int!) == id )
+            exist = exist && !( ( (self.bubblePool[i] as NSDictionary).objectForKey("post_id") as! Int!) == id )
         }
         return exist
     }

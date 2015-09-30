@@ -17,6 +17,8 @@ class BubbleScene : SKScene , SocketDelegate  {
     var bubbleImage : [SKSpriteNode] = []
     var posPOI : [POI]    = []
     
+    var detailDelegate : DetailDelegate!
+    
     override func didMoveToView(view: SKView) {
         //データの取得
         sensor = Sensor.sharedInstance
@@ -28,17 +30,22 @@ class BubbleScene : SKScene , SocketDelegate  {
         self.size.width  = view.bounds.width
         self.physicsWorld.gravity = CGVectorMake(0,0)
         
-            //デバッグ用固定データ
+        //デバッグ用固定データ
         //posPOI.append( POI(latitude: 41.759193 , longitude: 140.703982 , message: "函館山") )   //hakodate yama
         //posPOI.append( POI(latitude: 41.848004 , longitude: 140.768681 , message: "四季の森") )   //shikino mori
         
-        let socket : Socket = Socket(urlstr: Settings.socketURL , lat : sensor.latitude , lon : sensor.longitude)
+        let socket : Socket = Socket.sharedInstance
         socket.delegate     = self
     }
+
     
     override func update(currentTime: CFTimeInterval) {
         let realHeading : Double = sensor.heading  - ( sensor.pitch / M_PI * 180 )
-        let viewPOI = POI(latitude: sensor.latitude, longitude: sensor.longitude , altitude : sensor.altitude)
+        let viewPOI = POI(
+            post_id  : 0 , //自分の位置情報にIDはないので，適当な値を入れる
+            latitude : sensor.latitude,
+            longitude: sensor.longitude ,
+            altitude : sensor.altitude )
         
         for ( var i = 0 ; i < posPOI.count ; i++ ) {
             let place : Double = ( AR.isExist(viewPOI: viewPOI, posPOI: posPOI[i] , heading: realHeading) )
@@ -59,12 +66,12 @@ class BubbleScene : SKScene , SocketDelegate  {
                 let moveAction    =  SKAction.moveTo(location , duration: NSTimeInterval(0.0))
                 let fadeInAction  =  SKAction.fadeInWithDuration(0.2)
                 
-                bubbleImage[i].alpha = 0.0 //動かしてから表示させないと急に動いたように見える
+                bubbleImage[i].alpha = 0.0
                 bubbleImage[i].runAction(rotateAction)
                 bubbleImage[i].runAction(moveAction)
-                //bubbleImage[i].runAction(fadeInAction)
+                
                 if(bubbleImage[i].speed < 30.0) {
-                    bubbleImage[i].alpha = 1.0 //動かしてから表示させないと急に動いたように見える
+                    bubbleImage[i].alpha = 1.0
                 }
                 
                 
@@ -78,11 +85,16 @@ class BubbleScene : SKScene , SocketDelegate  {
     
     func createBubble(poi : POI)  {
         //バブル（背景）
-        let node : SKSpriteNode! = SKSpriteNode(imageNamed: "bubble.png")
+        let node : BubbleSprite! = BubbleSprite(imageNamed: "bubble.png")
         node.xScale   *= 0.3
         node.yScale   *= 0.3
         //node.position = CGPointMake(self.size.width / 2 , self.size.height / 2 )
         node.alpha    = 0.0
+        node.userInteractionEnabled = true
+        node.name     = poi.message
+        node.poi      = poi
+        node.detailDelegate = self.detailDelegate
+        
         
         //文字
         let label : SKLabelNode = SKLabelNode(fontNamed:"HiraKakuProN-W3")
@@ -96,7 +108,7 @@ class BubbleScene : SKScene , SocketDelegate  {
         node.addChild(label)
         self.addChild(node)
         
-        //当たり判定就けてみる
+        //当たり判定をつけることにより重ならないようにする
         node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2.0)
         
         

@@ -13,7 +13,7 @@ import CoreLocation
 import CoreMotion
 import SpriteKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , DetailDelegate{
   
     // MARK: - カメラ
     var cameraDevice :AVCaptureDevice!
@@ -29,6 +29,9 @@ class ViewController: UIViewController {
     var yaw       : Double = 0.0
     var roll      : Double = 0.0
     var pitch     : Double = 0.0
+    
+    //その他
+    var poiForSendingDetail : POI! //詳細画面に遷移する際に送るPOIの入れ物
 
     //ボタンを押して
     @IBOutlet weak var postButtonOutlet: UIButton!
@@ -112,11 +115,12 @@ class ViewController: UIViewController {
     private func skInit() {
         //別途用意したシーンを追加
         let scene : BubbleScene = BubbleScene()
+        scene.detailDelegate = self
         
         //SpriteKit用のViewを作成
         let skView:SKView = SKView(frame: self.view.frame)
         skView.allowsTransparency = true
-        skView.userInteractionEnabled = false
+        skView.userInteractionEnabled = true
         
         //デバッグ情報を表示
         //skView.showsFPS = true
@@ -131,5 +135,22 @@ class ViewController: UIViewController {
         self.view.addSubview(skView)
 
     }
+    
+    // MARK: - 画面遷移
+    func moveDetail(poi : POI) {
+        self.poiForSendingDetail = poi
+        performSegueWithIdentifier("detailBubbleSegue", sender: self)
+        
+    }
+    
+    //遷移前の処理
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detailBubbleSegue" {
+            (segue.destinationViewController as! DetailBubbleController).poi = self.poiForSendingDetail
+        }
+    }
 }
 
+protocol DetailDelegate {
+    func moveDetail(poi : POI)
+}

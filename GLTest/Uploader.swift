@@ -109,7 +109,7 @@ class Uploader : NSObject , NSURLSessionDelegate {
         httpBody.appendData(String("\(sensor.longitude)\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         httpBody.appendData(String("--\(boundary)\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
         
-        //          バイナリデータ
+        //          バイナリデータ（テキストの場合はスルー）
         if self.status == MessageStatus.Image || self.status == MessageStatus.Video {
             httpBody.appendData(String("Content-Disposition: from-data; name=\"fileup\"").dataUsingEncoding(NSUTF8StringEncoding)!)
             httpBody.appendData(String("filename=\"\(filename)\"\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)

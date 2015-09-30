@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		17055F4A1B7CD42E0081B023 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17055F491B7CD42E0081B023 /* PostViewController.swift */; };
+		170755CB1BB9267B008E408E /* BubbleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170755CA1BB9267B008E408E /* BubbleSprite.swift */; };
+		170755CD1BB94A06008E408E /* DetailBubbleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170755CC1BB94A06008E408E /* DetailBubbleController.swift */; };
 		171326631BAE639D00CF6F21 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171326621BAE639D00CF6F21 /* Settings.swift */; };
 		171326651BAEA18F00CF6F21 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171326641BAEA18F00CF6F21 /* Session.swift */; };
 		171DBF211BA05CC2000EA4B1 /* AppendImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DBF201BA05CC2000EA4B1 /* AppendImageDelegate.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		17055F491B7CD42E0081B023 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		170755CA1BB9267B008E408E /* BubbleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleSprite.swift; sourceTree = "<group>"; };
+		170755CC1BB94A06008E408E /* DetailBubbleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBubbleController.swift; sourceTree = "<group>"; };
 		171326621BAE639D00CF6F21 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		171326641BAEA18F00CF6F21 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = ../Session.swift; sourceTree = "<group>"; };
 		171DBF201BA05CC2000EA4B1 /* AppendImageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppendImageDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				171DBF201BA05CC2000EA4B1 /* AppendImageDelegate.swift */,
 				175EED431BA1A6AF005D6324 /* MyPageController.swift */,
 				1735E0071BAD217100D8D4C1 /* LoginController.swift */,
+				170755CC1BB94A06008E408E /* DetailBubbleController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				17DECACF1B7AD39600678182 /* BubbleScene.swift */,
+				170755CA1BB9267B008E408E /* BubbleSprite.swift */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 				17DECAB21B7ACA0800678182 /* ViewController.swift in Sources */,
 				175EED421BA19C0B005D6324 /* PhotoCaptureViewController.swift in Sources */,
 				17DECAD21B7AD4B100678182 /* Sensor.swift in Sources */,
+				170755CB1BB9267B008E408E /* BubbleSprite.swift in Sources */,
 				17E53AF71B81A60F00C2CB87 /* AppendViewController.swift in Sources */,
 				175CAC461B7F09AA0043DD9C /* Uploader.swift in Sources */,
 				171326631BAE639D00CF6F21 /* Settings.swift in Sources */,
@@ -390,6 +397,7 @@
 				17DECAD41B7ADE9500678182 /* AR.swift in Sources */,
 				17D756951BAEE4E700154C05 /* SessionDelegate.swift in Sources */,
 				171326651BAEA18F00CF6F21 /* Session.swift in Sources */,
+				170755CD1BB94A06008E408E /* DetailBubbleController.swift in Sources */,
 				175EED441BA1A6AF005D6324 /* MyPageController.swift in Sources */,
 				1775F9AC1B888446008F4038 /* Socket.swift in Sources */,
 				17DECAD81B7AE27200678182 /* POI.swift in Sources */,
