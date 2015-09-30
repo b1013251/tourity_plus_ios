@@ -1,10 +1,9 @@
-//
-//  ViewController.swift
-//  GLTest
-//
-//  Created by mukuri on 2015/08/12.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    投稿画面のコントローラ
+
+*/
+
 
 import UIKit
 import AVFoundation

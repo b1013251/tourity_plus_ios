@@ -1,10 +1,9 @@
-//
-//  Bubble.swift
-//  GLTest
-//
-//  Created by mukuri on 2015/09/28.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+
+    バブル１つを表すSpriteNode
+
+*/
 
 import Foundation
 import SpriteKit
@@ -15,6 +14,6 @@ class BubbleSprite : SKSpriteNode {
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         println("touched \(self.name)")
-        self.detailDelegate.moveDetail( self.poi )
+        self.detailDelegate.moveDetailView( self.poi )
     }
 }

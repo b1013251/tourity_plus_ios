@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -23,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Twitter.sharedInstance().startWithConsumerKey("sshdXxA0xlIb5Npj9z9RUffhC",
             consumerSecret: "EQWWHDGt2jWps3W5ng8uGqNViajCVCDVlLn7PTvU6nNoTP3kJe")
         Fabric.with([Twitter()])
-        
-        //初期化
+    
+        //ユーザ情報の初期化
         let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         return true
@@ -45,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(application: UIApplication) {

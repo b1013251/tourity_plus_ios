@@ -1,10 +1,8 @@
-//
-//  Socket.swift
-//  WebsocketTest
-//
-//  Created by mukuri on 2015/08/22.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    Socket.ioの接続を管理する
+
+*/
 
 import Foundation
 import Socket_IO_Client_Swift
@@ -22,20 +20,28 @@ class Socket{
     var latitude   : Double
     var longitude  : Double
     
-    //Singleton
-    static let sharedInstance = Socket()
     
+    class var sharedInstance: Socket {
+        struct Static {
+            static let instance : Socket = Socket()
+        }
+        return Static.instance
+    }
+    
+    //初期化
     private init() {
         let sensor : Sensor = Sensor.sharedInstance
         latitude  = sensor.latitude
         longitude = sensor.longitude
         self.socket = SocketIOClient(socketURL: Settings.socketURL , options: nil)
         
+        //接続時の処理
         self.socket.on("connect" ,callback: { data , ack in
             println("socket connected")
             self.getData(lat: self.latitude, lon: self.longitude)
         })
         
+        //バブルを受け取った時の処理
         self.socket.on("message_bubbles", callback: {data , ack in
             if let realData = data as? [NSDictionary] {
                 if self.isNotExist(realData[0].objectForKey("post_id") as! Int!) {
@@ -51,14 +57,33 @@ class Socket{
             }
         })
         
+        //画像を受け取った時の処理
         self.socket.on("response_image", callback: {data , ack in
             println("get image")
             if let readData = data as? [NSDictionary] {
                 println( readData[0].objectForKey("message") as! String )
             }
         })
-        
-        self.socket.connect()
+    }
+    
+    //あとから手動で接続するとき（初期化時にも接続する）
+    func connect() {
+        if !self.socket.connected {
+            self.socket.connect()
+        } else {
+            println("ソケットに接続中なのであらたにせつぞくしません")
+            let sensor : Sensor = Sensor.sharedInstance
+            
+            //位置情報を再送
+            latitude  = sensor.latitude
+            longitude = sensor.longitude
+            getData(lat: latitude , lon: longitude)
+        }
+    }
+    
+    //画面遷移などでバブル情報をクリアする
+    func clearBubble() {
+        bubblePool.removeAll(keepCapacity: true)
     }
     
     

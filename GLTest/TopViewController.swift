@@ -1,10 +1,8 @@
-//
-//  ViewController.swift
-//  GLTest
-//
-//  Created by mukuri on 2015/08/12.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    トップメニューのコントローラ
+
+*/
 
 import UIKit
 import AVFoundation
@@ -30,10 +28,8 @@ class TopViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let sensor = Sensor.sharedInstance
         sensor.start()
-        
     }
     
     override func didReceiveMemoryWarning() {

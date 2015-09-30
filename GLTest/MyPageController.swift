@@ -1,10 +1,8 @@
-//
-//  ViewController.swift
-//  PhotokitTest
-//
-//  Created by mukuri on 2015/08/16.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    マイページ画面のコントローラ
+
+*/
 
 import UIKit
 import Photos

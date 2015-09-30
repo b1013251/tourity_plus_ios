@@ -32,15 +32,13 @@ class Sensor : NSObject , CLLocationManagerDelegate{
     var roll        : Double = 0
     var pitch       : Double = 0
     
-    
     // MARK: - シングルトン
-    class var sharedInstance : Sensor {
+    class var sharedInstance: Sensor {
         struct Static {
             static let instance : Sensor = Sensor()
         }
         return Static.instance
     }
-    
     
     // MARK: - 初期化
     override private init() {
@@ -101,7 +99,7 @@ class Sensor : NSObject , CLLocationManagerDelegate{
         return isRunning
     }
     
-    //MARK: - 位置情報関連
+    //MARK: - 位置情報関連の自動更新
     func locationManager(manager : CLLocationManager! , didUpdateToLocation newLocation :CLLocation!
         , fromLocation oldLocation : CLLocation! ) {
             
@@ -115,10 +113,7 @@ class Sensor : NSObject , CLLocationManagerDelegate{
         heading = newHeading.trueHeading
     }
     
-    
-    //MARK: - シングルトンテスト（デバッグ用）
-    func echo() {
-        println("This is Singleton")
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("location error... \(error.localizedDescription)")
     }
-
 }

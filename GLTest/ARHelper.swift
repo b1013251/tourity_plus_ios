@@ -1,15 +1,14 @@
-//
-//  AR.swift
-//  ar_gps
-//
-//  Created by mukuri on 2015/08/07.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    ARに関する処理
+    　クラスメソッドしか作っていない
+
+*/
 
 import Foundation
 import UIKit
 
-class AR {
+class ARHelper {
     
     static let VIEW_ANGLE : Double  =  M_PI / 6.0 //30°
     static let NOT_EXIST  : Double  =  184
@@ -23,14 +22,7 @@ class AR {
             , posLat: posPOI.latitude , posLon: posPOI.longitude)
         let trueHeading = degToRad(fmod(heading,360.0))
         var target_azimuth = trueHeading - angle
-        
-        /* デバッグ用
-        print(radToDeg(target_azimuth))
-        print(" angle:")
-        print(radToDeg(angle))
-        print(" heading")
-        print(heading)
-        */
+    
         
         if target_azimuth < VIEW_ANGLE && (-VIEW_ANGLE) < target_azimuth {
             //println(" exist \( radToDeg(target_azimuth) )")
@@ -76,13 +68,6 @@ class AR {
     }
     
     class private func getDistance(#viewLat : Double , viewLon : Double , posLat : Double , posLon : Double) -> Double {
-        /* 前のアルゴリズム
-        let vector = getVector(viewLat: viewLat, viewLon: viewLon, posLat: posLat, posLon: posLon)
-        
-        return sqrt(pow(vector.dx, 2.0) + pow(vector.dy , 2.0)) * EARTH_R
-        */
-        
-        /* こっちのほうがよさそー */
         let distance = EARTH_R * acos( sin(viewLat) * sin(posLat) + cos(viewLat) * cos(posLat) * cos(viewLat - posLat) )
         //println("distance : \(distance)")
         return distance

@@ -1,10 +1,8 @@
-//
-//  POI.swift
-//  GLTest
-//
-//  Created by mukuri on 2015/08/12.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    位置情報を定義
+
+*/
 
 import Foundation
 

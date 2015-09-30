@@ -1,10 +1,8 @@
-//
-//  ViewController.swift
-//  PhotokitTest
-//
-//  Created by mukuri on 2015/08/16.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    起動時にTwitterIDからログインする
+
+*/
 
 import UIKit
 import Fabric
@@ -83,19 +81,3 @@ class LoginController: UIViewController , UINavigationControllerDelegate , Sessi
         }
     }
 }
-
-/*
-let loginButton = TWTRLogInButton(logInCompletion: {
-session , error in
-if session != nil {
-self.authToken = session!.authToken
-self.performSegueWithIdentifier("topViewSegue", sender: self)
-let user : User = User(authToken: self.authToken , authTokenSecret: self.authTokenSecret)
-user.upload()
-}
-})
-
-
-loginButton.center = self.view.center
-self.view.addSubview(loginButton)
-*/

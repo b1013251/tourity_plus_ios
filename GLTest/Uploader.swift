@@ -1,10 +1,8 @@
-//
-//  Uploader.swift
-//  UploadClient
-//
-//  Created by mukuri on 2015/08/15.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    サーバに投稿するクラス
+
+*/
 
 import Foundation
 import UIKit

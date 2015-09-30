@@ -1,10 +1,9 @@
-//
-//  ViewController.swift
-//  PhotokitTest
-//
-//  Created by mukuri on 2015/08/16.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    バブルの詳細画面
+
+*/
+
 
 import UIKit
 import Fabric

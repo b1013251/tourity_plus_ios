@@ -1,10 +1,10 @@
-//
-//  EastScene.swift
-//  CameraTest
-//
-//  Created by mukuri on 2015/07/02.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    
+    SpriteKitのAR表示用 Scene
+
+
+*/
 
 import Foundation
 import SpriteKit
@@ -14,30 +14,31 @@ import CoreLocation
 class BubbleScene : SKScene , SocketDelegate  {
     
     var sensor : Sensor!
-    var bubbleImage : [SKSpriteNode] = []
-    var posPOI : [POI]    = []
-    
+    var socket : Socket!
     var detailDelegate : DetailDelegate!
+    
+    var bubbleImage : [SKSpriteNode] = [] //バブルを格納
+    var posPOI      : [POI]          = [] //バブル毎の位置情報を格納
+    
     
     override func didMoveToView(view: SKView) {
         //データの取得
-        sensor = Sensor.sharedInstance
-        sensor.start()
+        self.sensor = Sensor.sharedInstance
+        self.sensor.start()
+        
+        //シーンが表示されるたびにSocketサーバに接続
+        self.socket = Socket.sharedInstance
+        self.socket.delegate = self
+        self.socket.clearBubble()
+        self.socket.connect()
+        
         
         //画面関係の初期化
         self.backgroundColor = SKColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.0)
         self.size.height = view.bounds.height
         self.size.width  = view.bounds.width
         self.physicsWorld.gravity = CGVectorMake(0,0)
-        
-        //デバッグ用固定データ
-        //posPOI.append( POI(latitude: 41.759193 , longitude: 140.703982 , message: "函館山") )   //hakodate yama
-        //posPOI.append( POI(latitude: 41.848004 , longitude: 140.768681 , message: "四季の森") )   //shikino mori
-        
-        let socket : Socket = Socket.sharedInstance
-        socket.delegate     = self
     }
-
     
     override func update(currentTime: CFTimeInterval) {
         let realHeading : Double = sensor.heading  - ( sensor.pitch / M_PI * 180 )
@@ -48,13 +49,13 @@ class BubbleScene : SKScene , SocketDelegate  {
             altitude : sensor.altitude )
         
         for ( var i = 0 ; i < posPOI.count ; i++ ) {
-            let place : Double = ( AR.isExist(viewPOI: viewPOI, posPOI: posPOI[i] , heading: realHeading) )
+            let place : Double = ( ARHelper.isExist(viewPOI: viewPOI, posPOI: posPOI[i] , heading: realHeading) )
             
-            if place != AR.NOT_EXIST {
+            if place != ARHelper.NOT_EXIST {
                 let x  = Double(CGRectGetMidX(self.frame)) - Double(place / 60.0) * Double(self.size.width)
                 let y  = Double(CGRectGetMidY(self.frame))
                     + Double( (sensor.roll + M_PI_2) / M_PI ) * Double(self.size.height) * 4
-                    + Double( AR.getVerticalAngle(viewPOI: viewPOI , posPOI: posPOI[i]) * Double(CGRectGetMidY(self.frame)))
+                    + Double( ARHelper.getVerticalAngle(viewPOI: viewPOI , posPOI: posPOI[i]) * Double(CGRectGetMidY(self.frame)))
                     - Double( sensor.pitch / M_PI * 180.0 * Double(place / 60.0) * 10.0)
                 
                 let location = CGPoint(x: x, y: y)
@@ -82,9 +83,10 @@ class BubbleScene : SKScene , SocketDelegate  {
         
     }
     
-    
+    //MARK: - Socket Delegateの実装
     func createBubble(poi : POI)  {
-        //バブル（背景）
+        println("bubble created : \(poi.message)")
+        //バブル画像部分
         let node : BubbleSprite! = BubbleSprite(imageNamed: "bubble.png")
         node.xScale   *= 0.3
         node.yScale   *= 0.3
@@ -96,7 +98,7 @@ class BubbleScene : SKScene , SocketDelegate  {
         node.detailDelegate = self.detailDelegate
         
         
-        //文字
+        //文字部分
         let label : SKLabelNode = SKLabelNode(fontNamed:"HiraKakuProN-W3")
         label.fontSize  =  40
         label.position  =  CGPointMake( 0 , 0 )
@@ -105,8 +107,10 @@ class BubbleScene : SKScene , SocketDelegate  {
         label.text      =  poi.message
         
         
+        //シーンにバブルを追加する
         node.addChild(label)
         self.addChild(node)
+        
         
         //当たり判定をつけることにより重ならないようにする
         node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2.0)

@@ -1,10 +1,8 @@
-//
-//  ViewController.swift
-//  GLTest
-//
-//  Created by mukuri on 2015/08/12.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+        AR画面のコントローラ
+
+*/
 
 import UIKit
 import AVFoundation
@@ -70,6 +68,7 @@ class ViewController: UIViewController , DetailDelegate{
         cameraSession.stopRunning()
         videoLayer.removeFromSuperlayer()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -137,7 +136,7 @@ class ViewController: UIViewController , DetailDelegate{
     }
     
     // MARK: - 画面遷移
-    func moveDetail(poi : POI) {
+    func moveDetailView(poi : POI) {
         self.poiForSendingDetail = poi
         performSegueWithIdentifier("detailBubbleSegue", sender: self)
         
@@ -149,8 +148,4 @@ class ViewController: UIViewController , DetailDelegate{
             (segue.destinationViewController as! DetailBubbleController).poi = self.poiForSendingDetail
         }
     }
-}
-
-protocol DetailDelegate {
-    func moveDetail(poi : POI)
 }

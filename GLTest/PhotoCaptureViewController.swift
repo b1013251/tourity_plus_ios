@@ -1,10 +1,9 @@
-//
-//  ViewController.swift
-//  UploadClient
-//
-//  Created by mukuri on 2015/08/15.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    投稿時 撮影することで添付する
+    撮影画面
+
+*/
 
 import UIKit
 import AVFoundation
