@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3kz-Yw-oBJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3kz-Yw-oBJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -186,9 +186,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="詳細" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Be-Ia-44L">
-                                <rect key="frame" x="283" y="20" width="34" height="21"/>
+                                <rect key="frame" x="283" y="20" width="34" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLB-G6-aFA">
@@ -200,16 +200,24 @@
                                     <action selector="backButtonPush:" destination="dTw-8y-hus" eventType="touchUpInside" id="WMu-Io-oz0"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VnY-22-g3K">
+                                <rect key="frame" x="26" y="55.5" width="548" height="534.5"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VnY-22-g3K" firstAttribute="leading" secondItem="dku-ls-CK0" secondAttribute="leadingMargin" constant="10" id="GYv-js-xTj"/>
+                            <constraint firstItem="VnY-22-g3K" firstAttribute="top" secondItem="6Be-Ia-44L" secondAttribute="bottom" constant="15" id="M9B-Et-ufP"/>
                             <constraint firstItem="oLB-G6-aFA" firstAttribute="leading" secondItem="dku-ls-CK0" secondAttribute="leadingMargin" constant="10" id="MSm-XZ-uEB"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="VnY-22-g3K" secondAttribute="bottom" constant="10" id="UV1-P5-tac"/>
                             <constraint firstAttribute="centerX" secondItem="6Be-Ia-44L" secondAttribute="centerX" id="eTE-My-kCX"/>
                             <constraint firstItem="oLB-G6-aFA" firstAttribute="top" secondItem="dku-ls-CK0" secondAttribute="topMargin" constant="10" id="kFk-Wg-bAJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VnY-22-g3K" secondAttribute="trailing" constant="10" id="mQb-ah-fAa"/>
                             <constraint firstItem="6Be-Ia-44L" firstAttribute="top" secondItem="Jwf-IP-HRs" secondAttribute="bottom" id="zyk-pS-fY0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="detailImage" destination="VnY-22-g3K" id="G0b-Yq-a1t"/>
                         <outlet property="titleLabel" destination="6Be-Ia-44L" id="af6-dI-gYZ"/>
                     </connections>
                 </viewController>

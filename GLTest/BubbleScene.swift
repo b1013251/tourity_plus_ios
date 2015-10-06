@@ -46,7 +46,8 @@ class BubbleScene : SKScene , SocketDelegate  {
             post_id  : 0 , //自分の位置情報にIDはないので，適当な値を入れる
             latitude : sensor.latitude,
             longitude: sensor.longitude ,
-            altitude : sensor.altitude )
+            altitude : sensor.altitude ,
+            file_path : "")
         
         for ( var i = 0 ; i < posPOI.count ; i++ ) {
             let place : Double = ( ARHelper.isExist(viewPOI: viewPOI, posPOI: posPOI[i] , heading: realHeading) )

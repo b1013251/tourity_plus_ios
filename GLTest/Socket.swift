@@ -51,7 +51,8 @@ class Socket{
                         latitude  : realData[0].objectForKey("latitude")  as! Double ,
                         longitude : realData[0].objectForKey("longitude") as! Double ,
                         altitude  : realData[0].objectForKey("altitude")  as! Double ,
-                        message   : realData[0].objectForKey("message")   as! String)
+                        message   : realData[0].objectForKey("message")   as! String ,
+                        file_path : realData[0].objectForKey("file_path") as! String )
                     self.delegate.createBubble(poi)
                 }
             }

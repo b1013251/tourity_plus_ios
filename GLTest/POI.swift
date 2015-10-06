@@ -13,20 +13,23 @@ class POI {
     var altitude  : Double // 標高
     var message   : String // メッセージ
     var post_id   : Int    // 投稿ID
+    var file_path : String // ファイルパス
     
-    init(post_id : Int , latitude : Double , longitude : Double , altitude : Double) {
+    init(post_id : Int , latitude : Double , longitude : Double , altitude : Double , file_path : String) {
         self.latitude  = latitude
         self.longitude = longitude
         self.altitude  = altitude
         self.message   = ""
         self.post_id   = post_id
+        self.file_path = file_path
     }
     
-    init(post_id : Int , latitude : Double , longitude : Double , altitude : Double , message : String) {
+    init(post_id : Int , latitude : Double , longitude : Double , altitude : Double , message : String , file_path : String) {
         self.latitude  = latitude
         self.longitude = longitude
         self.altitude  = altitude
         self.message   = message
         self.post_id   = post_id
+        self.file_path = file_path
     }
 }
