@@ -36,12 +36,40 @@ class Session : NSObject {
         
         //POSTリクエストの送信
         println("sessionIDを送信します")
-        let responseData   : NSData   = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)!
+        var response       : NSURLResponse?
+        var error          : NSError?
+        let responseData   : NSData!   = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response , error: &error)!
+        
+        if let err = error {
+            println(err)
+            return
+        }
+        
         let responseString : NSString = NSString(data:responseData,encoding:1)!
         println(responseString)
+        
+
 
         if responseString == "OK" {
             println("ログインしていたようなので、そのまま画面遷移するよ")
+            // cookieの更新
+            
+            if let httpResponse = response as? NSHTTPURLResponse {
+                let cookies : [NSHTTPCookie] = NSHTTPCookie.cookiesWithResponseHeaderFields(httpResponse.allHeaderFields,
+                    forURL: NSURL(string: "")!) as! [NSHTTPCookie]
+                
+                
+                
+                for cookie : NSHTTPCookie in cookies {
+                    if cookie.name == "Session-Cookie" {
+                        println("\(cookie.value) を受け取ったので保存します")
+                        
+                        let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                        userDefaults.setObject(cookie.value , forKey: "sessionID")
+                    }
+                }
+            }
+            
             self.delegate.sessionSuccess()
         } else {
             println("ログインされていなかったので、これからログインするよ")
@@ -96,5 +124,10 @@ class Session : NSObject {
         
         return cookies
 
+    }
+    
+    private func updateCookieUserDefaults(cookie_str : String) {
+        let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject(cookie_str, forKey: "sessionID")
     }
 }

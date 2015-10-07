@@ -38,7 +38,7 @@ class Socket{
         //接続時の処理
         self.socket.on("connect" ,callback: { data , ack in
             println("socket connected")
-            self.getData(lat: self.latitude, lon: self.longitude)
+            self.getData()
         })
         
         //バブルを受け取った時の処理
@@ -69,16 +69,13 @@ class Socket{
     
     //あとから手動で接続するとき（初期化時にも接続する）
     func connect() {
+
         if !self.socket.connected {
             self.socket.connect()
         } else {
             println("ソケットに接続中なのであらたにせつぞくしません")
-            let sensor : Sensor = Sensor.sharedInstance
-            
             //位置情報を再送
-            latitude  = sensor.latitude
-            longitude = sensor.longitude
-            getData(lat: latitude , lon: longitude)
+            getData()
         }
     }
     
@@ -88,9 +85,11 @@ class Socket{
     }
     
     
-    func getData(#lat : Double , lon : Double) {
+    private func getData() {
         println("emitted")
-        self.socket.emit("location_server", ["latitude" : lat , "longitude" : lon , "range" : 1500] )
+        
+        let sensor : Sensor = Sensor.sharedInstance
+        self.socket.emit("location_server", ["latitude" : sensor.latitude , "longitude" : sensor.longitude , "range" : 1500] )
     }
     
     func getPOIData() -> [POI] {
