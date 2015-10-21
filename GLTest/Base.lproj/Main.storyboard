@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="1345" y="360"/>
         </scene>
-        <!--Login Controller-->
+        <!--First View Controller-->
         <scene sceneID="Zoi-nw-Bzt">
             <objects>
-                <viewController id="3kz-Yw-oBJ" customClass="LoginController" customModule="GLTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3kz-Yw-oBJ" customClass="FirstViewController" customModule="GLTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l20-i2-Uxj"/>
                         <viewControllerLayoutGuide type="bottom" id="TLA-3a-GQB"/>
@@ -84,45 +84,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKs-19-zkQ">
-                                <rect key="frame" x="279" y="50" width="43" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tourity+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKs-19-zkQ">
+                                <rect key="frame" x="269" y="50" width="62" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4a-eg-5SX">
-                                <rect key="frame" x="0.0" y="-5" width="600" height="610"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="QBM-Qo-Aa9">
-                                        <rect key="frame" x="290" y="295" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="QBM-Qo-Aa9" secondAttribute="centerY" id="5Wo-NJ-gIj"/>
-                                    <constraint firstAttribute="centerX" secondItem="QBM-Qo-Aa9" secondAttribute="centerX" id="CaF-9Y-q7q"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-xl-NNq">
+                                <rect key="frame" x="235" y="101" width="130" height="30"/>
+                                <state key="normal" title="Sign in with Twitter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FuB-bu-oXV" kind="showDetail" id="wJV-ln-kkk"/>
+                                </connections>
+                            </button>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhp-Ob-yhT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="HKs-19-zkQ" secondAttribute="centerX" id="016-zH-dQY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="S4a-eg-5SX" secondAttribute="trailing" constant="-16" id="Q9V-GT-Uiz"/>
-                            <constraint firstItem="S4a-eg-5SX" firstAttribute="leading" secondItem="Zhb-SO-pMe" secondAttribute="leadingMargin" constant="-16" id="iPX-at-bxu"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="S4a-eg-5SX" secondAttribute="bottom" constant="-5" id="mHJ-ln-pDu"/>
-                            <constraint firstItem="S4a-eg-5SX" firstAttribute="top" secondItem="Zhb-SO-pMe" secondAttribute="topMargin" constant="-5" id="qUV-ww-lit"/>
+                            <constraint firstAttribute="centerX" secondItem="gUP-xl-NNq" secondAttribute="centerX" id="Hl6-z2-LNv"/>
+                            <constraint firstItem="TLA-3a-GQB" firstAttribute="top" secondItem="Fhp-Ob-yhT" secondAttribute="bottom" id="Ial-Ys-aN1"/>
+                            <constraint firstItem="gUP-xl-NNq" firstAttribute="top" secondItem="HKs-19-zkQ" secondAttribute="bottom" constant="30" id="daL-xF-IV3"/>
+                            <constraint firstItem="Fhp-Ob-yhT" firstAttribute="leading" secondItem="Zhb-SO-pMe" secondAttribute="leading" id="uNg-zY-ci9"/>
                             <constraint firstItem="HKs-19-zkQ" firstAttribute="top" secondItem="l20-i2-Uxj" secondAttribute="bottom" constant="30" id="vQ4-80-qFw"/>
+                            <constraint firstAttribute="trailing" secondItem="Fhp-Ob-yhT" secondAttribute="trailing" id="vyp-0w-fCX"/>
+                            <constraint firstItem="Fhp-Ob-yhT" firstAttribute="top" secondItem="Zhb-SO-pMe" secondAttribute="topMargin" id="y4w-PV-MXz"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activeIndicatorView" destination="QBM-Qo-Aa9" id="Qh6-6v-THg"/>
-                        <outlet property="overView" destination="S4a-eg-5SX" id="iuK-OZ-P5h"/>
+                        <outlet property="overwrapView" destination="Fhp-Ob-yhT" id="RgA-y7-kVc"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="topViewSegue" id="kmV-xw-pka"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Az7-9x-YKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="360"/>
+            <point key="canvasLocation" x="486" y="310"/>
+        </scene>
+        <!--Login Controller-->
+        <scene sceneID="ml2-1l-UO7">
+            <objects>
+                <viewController id="FuB-bu-oXV" customClass="LoginController" customModule="GLTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7f5-oz-g6Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="zAH-h1-ega"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dgG-dB-9Bf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ajd-Zp-a5d">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Ajd-Zp-a5d" id="fPF-5X-LNv"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="topViewSegueFromLogin" id="EED-ti-AiS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zL3-gU-slE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="1113"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fkm-Pu-zuc">
@@ -581,4 +610,7 @@
     <resources>
         <image name="bubble.png" width="318" height="324"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kmV-xw-pka"/>
+    </inferredMetricsTieBreakers>
 </document>
