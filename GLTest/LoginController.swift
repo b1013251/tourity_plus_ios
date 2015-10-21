@@ -8,52 +8,19 @@ import UIKit
 import Fabric
 import TwitterKit
 
-class LoginController: UIViewController , UINavigationControllerDelegate , SessionDelegate{
+class LoginController: UIViewController , UINavigationControllerDelegate, UIWebViewDelegate {
     
-    var authToken       : String = ""
-    var authTokenSecret : String = ""
     
-    @IBOutlet weak var overView: UIView!
-    
-    @IBOutlet weak var activeIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
-        activeIndicatorView.startAnimating()
         
-        
-        //クッキー送ってあげるうううううううううう
-        let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let sessionIDCookies = userDefaults.stringForKey("sessionID")// as! [NSHTTPCookie]
-        
-        if sessionIDCookies == nil {
-            println("クッキーがなかったので、ログインします")
-            self.loginTwitter()
-            return
-        }
-        
-        println("sessionID:\(sessionIDCookies)")
-        
-        let sendCookieSession = Session(sessionIDCookie: sessionIDCookies! , delegate: self)
-        sendCookieSession.sendCookie()
-
-    }
-    
-    //ログインを既にしていたら、そのまま画面遷移
-    func sessionSuccess(){
-        NSThread.sleepForTimeInterval(1.0)
-        self.performSegueWithIdentifier("topViewSegue", sender: self)
-    }
-
-    
-    //ログインできていなかったら、ログイン画面へ
-    func sessionFailure() {
-        loginTwitter()
+        let url     = NSURL(string: "http://192.168.11.35:3000/auth")!
+        let request = NSURLRequest(URL: url)
+        webView.delegate = self
+        webView.loadRequest(request)
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,22 +29,25 @@ class LoginController: UIViewController , UINavigationControllerDelegate , Sessi
     }
     
     
-    func loginTwitter() {
-        //Twitterにログイン
-        println("Twitterにログインします")
-        Twitter.sharedInstance().logInWithCompletion {
-            session, error in
-            if (session != nil) {
-                println("signed in as \(session!.userName)");
-                self.authToken        =  session!.authToken
-                self.authTokenSecret  =  session!.authTokenSecret
-                let user : User = User(authToken: self.authToken , authTokenSecret: self.authTokenSecret)
-                user.upload()
-                self.performSegueWithIdentifier("topViewSegue", sender: self)
-            } else {
-                println("error: \(error!.localizedDescription)");
-                self.overView.hidden = true
+    func webViewDidFinishLoad(webView: UIWebView) {
+        if webView.stringByEvaluatingJavaScriptFromString("document.URL") == "http://192.168.11.35:3000/success" {
+            let cookieStorage : NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+            for cookie in cookieStorage.cookies! {
+                if cookie.name == "connect.sid" {
+                    println("\((cookie as! NSHTTPCookie).value)")
+                }
             }
+            
+            //topViewSegueFromLogin
+            performSegueWithIdentifier("topViewSegueFromLogin", sender: self)
+
         }
     }
-}
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        println("webView url: \(request.URL)")
+        return true
+    }
+
+    
+   }

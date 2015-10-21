@@ -17,11 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        //Twitter設定
-        Twitter.sharedInstance().startWithConsumerKey("sshdXxA0xlIb5Npj9z9RUffhC",
-            consumerSecret: "EQWWHDGt2jWps3W5ng8uGqNViajCVCDVlLn7PTvU6nNoTP3kJe")
-        Fabric.with([Twitter()])
+
     
         //ユーザ情報の初期化
         let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()

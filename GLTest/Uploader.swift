@@ -217,7 +217,7 @@ class Uploader : NSObject , NSURLSessionDelegate {
         let properties : NSDictionary = NSDictionary(objectsAndKeys:
             Settings.serverURL    , NSHTTPCookieDomain ,
             "/"                   , NSHTTPCookiePath   ,
-            "Session-Cookie"      , NSHTTPCookieName   ,
+            "connect.sid"      , NSHTTPCookieName   ,
             sessionIDCookies! , NSHTTPCookieValue
         )
         
