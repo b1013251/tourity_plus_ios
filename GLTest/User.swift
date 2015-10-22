@@ -19,6 +19,8 @@ class User : NSObject , NSURLSessionDelegate  {
         self.authTokenSecret = authTokenSecret
     }
 
+
+
     func upload() {
         let sessionConfig : NSURLSessionConfiguration =
                 NSURLSessionConfiguration.defaultSessionConfiguration()

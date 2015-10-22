@@ -4,7 +4,7 @@
     ログイン処理をする
 
 */
-
+/*
 import Foundation
 
 class Session : NSObject {
@@ -131,3 +131,4 @@ class Session : NSObject {
         userDefaults.setObject(cookie_str, forKey: "sessionID")
     }
 }
+*/

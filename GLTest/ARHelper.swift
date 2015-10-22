@@ -15,7 +15,7 @@ class ARHelper {
     static let EARTH_R    : Double  = 6371
     
     
-    // MARK: - パブリック関数
+    // パブリック関数
     class func isExist(#viewPOI : POI , posPOI : POI , heading : Double ) -> Double {
         
         let angle = getAngle(viewLat: viewPOI.latitude, viewLon: viewPOI.longitude
@@ -49,7 +49,7 @@ class ARHelper {
     
 
     
-    // MARK: - プライベート関数
+    // プライベート関数
     class private func getAngle(#viewLat : Double , viewLon : Double , posLat : Double , posLon : Double) -> Double {
         
         let lonDiff = degToRad(posLon - viewLon)

@@ -54,12 +54,12 @@ class ViewController: UIViewController , DetailDelegate{
         super.viewDidAppear(animated)
         
         cameraInit()
+        cameraSession.startRunning()
         skInit()
         
         self.view.bringSubviewToFront(postButtonOutlet)
         self.view.bringSubviewToFront(backButton)
         
-        cameraSession.startRunning()
     }
     
     

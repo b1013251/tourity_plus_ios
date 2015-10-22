@@ -14,10 +14,9 @@
 		171326631BAE639D00CF6F21 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171326621BAE639D00CF6F21 /* Settings.swift */; };
 		171326651BAEA18F00CF6F21 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171326641BAEA18F00CF6F21 /* Session.swift */; };
 		171DBF211BA05CC2000EA4B1 /* AppendImageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171DBF201BA05CC2000EA4B1 /* AppendImageDelegate.swift */; };
-		1726F0F01BD69CD500B6AAE0 /* SessionSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726F0EF1BD69CD500B6AAE0 /* SessionSender.swift */; };
+		1726F0F01BD69CD500B6AAE0 /* CookieHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1726F0EF1BD69CD500B6AAE0 /* CookieHelper.swift */; };
 		1733AFD81BBC234F005B1C1F /* SocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1733AFD71BBC234F005B1C1F /* SocketDelegate.swift */; };
 		1735E0081BAD217100D8D4C1 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1735E0071BAD217100D8D4C1 /* LoginController.swift */; };
-		1735E00A1BAD327D00D8D4C1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1735E0091BAD327D00D8D4C1 /* User.swift */; };
 		173CE5551B7B9A2C008B6B47 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173CE5541B7B9A2C008B6B47 /* TopViewController.swift */; };
 		175CAC461B7F09AA0043DD9C /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CAC451B7F09AA0043DD9C /* Uploader.swift */; };
 		175CAC4A1B7F1F2F0043DD9C /* VideoRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CAC491B7F1F2F0043DD9C /* VideoRecordViewController.swift */; };
@@ -58,10 +57,9 @@
 		171326621BAE639D00CF6F21 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		171326641BAEA18F00CF6F21 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = ../Session.swift; sourceTree = "<group>"; };
 		171DBF201BA05CC2000EA4B1 /* AppendImageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppendImageDelegate.swift; sourceTree = "<group>"; };
-		1726F0EF1BD69CD500B6AAE0 /* SessionSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSender.swift; sourceTree = "<group>"; };
+		1726F0EF1BD69CD500B6AAE0 /* CookieHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookieHelper.swift; sourceTree = "<group>"; };
 		1733AFD71BBC234F005B1C1F /* SocketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketDelegate.swift; sourceTree = "<group>"; };
 		1735E0071BAD217100D8D4C1 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		1735E0091BAD327D00D8D4C1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		173CE5541B7B9A2C008B6B47 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		175CAC451B7F09AA0043DD9C /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		175CAC491B7F1F2F0043DD9C /* VideoRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecordViewController.swift; sourceTree = "<group>"; };
@@ -112,17 +110,16 @@
 		1733AFD61BBC13DC005B1C1F /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				17DECAD31B7ADE9500678182 /* ARHelper.swift */,
+				1726F0EF1BD69CD500B6AAE0 /* CookieHelper.swift */,
 				17DECAD11B7AD4B100678182 /* Sensor.swift */,
 				1775F9AB1B888446008F4038 /* Socket.swift */,
 				1733AFD71BBC234F005B1C1F /* SocketDelegate.swift */,
-				17DECAD31B7ADE9500678182 /* ARHelper.swift */,
-				171326641BAEA18F00CF6F21 /* Session.swift */,
-				17D756941BAEE4E700154C05 /* SessionDelegate.swift */,
 				17DECAD71B7AE27200678182 /* POI.swift */,
 				175CAC451B7F09AA0043DD9C /* Uploader.swift */,
-				1735E0091BAD327D00D8D4C1 /* User.swift */,
 				171326621BAE639D00CF6F21 /* Settings.swift */,
-				1726F0EF1BD69CD500B6AAE0 /* SessionSender.swift */,
+				171326641BAEA18F00CF6F21 /* Session.swift */,
+				17D756941BAEE4E700154C05 /* SessionDelegate.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -405,7 +402,7 @@
 				17055F4A1B7CD42E0081B023 /* PostViewController.swift in Sources */,
 				17DECAB21B7ACA0800678182 /* ViewController.swift in Sources */,
 				175EED421BA19C0B005D6324 /* PhotoCaptureViewController.swift in Sources */,
-				1726F0F01BD69CD500B6AAE0 /* SessionSender.swift in Sources */,
+				1726F0F01BD69CD500B6AAE0 /* CookieHelper.swift in Sources */,
 				17DECAD21B7AD4B100678182 /* Sensor.swift in Sources */,
 				170755CB1BB9267B008E408E /* BubbleSprite.swift in Sources */,
 				17E53AF71B81A60F00C2CB87 /* AppendViewController.swift in Sources */,
@@ -413,7 +410,6 @@
 				175CAC461B7F09AA0043DD9C /* Uploader.swift in Sources */,
 				171326631BAE639D00CF6F21 /* Settings.swift in Sources */,
 				17DECAD01B7AD39600678182 /* BubbleScene.swift in Sources */,
-				1735E00A1BAD327D00D8D4C1 /* User.swift in Sources */,
 				175CAC4A1B7F1F2F0043DD9C /* VideoRecordViewController.swift in Sources */,
 				17DECAD41B7ADE9500678182 /* ARHelper.swift in Sources */,
 				17D756951BAEE4E700154C05 /* SessionDelegate.swift in Sources */,
@@ -561,10 +557,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GLTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -576,10 +573,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GLTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

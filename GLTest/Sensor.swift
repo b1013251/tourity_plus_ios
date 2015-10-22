@@ -1,10 +1,8 @@
-//
-//  Sensor.swift
-//  GLTest
-//
-//  Created by mukuri on 2015/08/12.
-//  Copyright (c) 2015年 mukuri. All rights reserved.
-//
+/*
+
+    各種センサ情報を取得できる
+
+*/
 
 import Foundation
 import UIKit

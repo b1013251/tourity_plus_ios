@@ -52,7 +52,7 @@ class BubbleScene : SKScene , SocketDelegate  {
         for ( var i = 0 ; i < posPOI.count ; i++ ) {
             let place : Double = ( ARHelper.isExist(viewPOI: viewPOI, posPOI: posPOI[i] , heading: realHeading) )
             
-            if place != ARHelper.NOT_EXIST {
+            if place != ARHelper.NOT_EXIST { //存在していれば
                 let x  = Double(CGRectGetMidX(self.frame)) - Double(place / 60.0) * Double(self.size.width)
                 let y  = Double(CGRectGetMidY(self.frame))
                     + Double( (sensor.roll + M_PI_2) / M_PI ) * Double(self.size.height) * 4
@@ -61,24 +61,27 @@ class BubbleScene : SKScene , SocketDelegate  {
                 
                 let location = CGPoint(x: x, y: y)
                 
-                //println(" \(x) \(place) \(AR.getVerticalAngle(viewPOI: viewPOI , posPOI: posPOI[i]))")
-                
                 
                 let rotateAction  =  SKAction.rotateToAngle(CGFloat(sensor.pitch), duration: NSTimeInterval(0.0))
-                let moveAction    =  SKAction.moveTo(location , duration: NSTimeInterval(0.0))
+                let moveAction    =  SKAction.moveTo(location , duration: NSTimeInterval(0.1))
                 let fadeInAction  =  SKAction.fadeInWithDuration(0.2)
                 
-                bubbleImage[i].alpha = 0.0
+                bubbleImage[i].hidden = true
                 bubbleImage[i].runAction(rotateAction)
                 bubbleImage[i].runAction(moveAction)
                 
-                if(bubbleImage[i].speed < 30.0) {
-                    bubbleImage[i].alpha = 1.0
+                //移動すべき範囲内にあれば表示
+                /*
+                let xrange : Bool = ( Double(bubbleImage[i].position.x) < x + 100.0 ) && ( x - 100.0 < Double(bubbleImage[i].position.x) )
+                let yrange : Bool = ( Double(bubbleImage[i].position.y) < y + 100.0 ) && ( y - 100.0 < Double(bubbleImage[i].position.y) )
+                if xrange && yrange {
+                    self.bubbleImage[i].hidden = false
                 }
-                
+                */
+                bubbleImage[i].hidden = false
                 
             } else {
-                bubbleImage[i].alpha = 0.0
+                bubbleImage[i].hidden = true
             }
         }
         
@@ -89,10 +92,11 @@ class BubbleScene : SKScene , SocketDelegate  {
         println("bubble created : \(poi.message)")
         //バブル画像部分
         let node : BubbleSprite! = BubbleSprite(imageNamed: "bubble.png")
-        node.xScale   *= 0.3
-        node.yScale   *= 0.3
+        node.xScale   *= 0.5
+        node.yScale   *= 0.5
         //node.position = CGPointMake(self.size.width / 2 , self.size.height / 2 )
-        node.alpha    = 0.0
+        //node.alpha    = 0.0
+        node.hidden = true
         node.userInteractionEnabled = true
         node.name     = poi.message
         node.poi      = poi
@@ -114,7 +118,7 @@ class BubbleScene : SKScene , SocketDelegate  {
         
         
         //当たり判定をつけることにより重ならないようにする
-        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width / 2.0)
+        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width )
         
         
         posPOI.append(poi)

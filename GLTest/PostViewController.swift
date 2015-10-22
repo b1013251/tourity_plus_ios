@@ -134,16 +134,30 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
         var uploader : Uploader!
         if imageData != nil && imageAsset != nil {
             uploader = Uploader(asset: self.imageAsset!  , message: textView.text, status: status)
-            uploader.upload()
+            uploader.upload(self)
         } else if imageRawData != nil {
             uploader = Uploader(data: self.imageRawData! , message: textView.text, status: status)
-            uploader.upload()
+            uploader.upload(self)
         } else {
             println("only text upload")
             uploader = Uploader(message: textView.text)
-            uploader.upload()
+            uploader.upload(self)
         }
         
+        let wrapView : UIView = UIView(frame: self.view.bounds)
+        wrapView.backgroundColor = UIColor.blackColor()
+        wrapView.alpha = 0.5
+        
+        let indicator : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0.0, 0.0, 32.0, 32.0))
+        indicator.center = CGPointMake(self.view.bounds.size.width / 2 , self.view.bounds.size.height / 2)
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        
+        self.view.addSubview(wrapView)
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
+    }
+    
+    func uploadFinish() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

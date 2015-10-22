@@ -101,7 +101,19 @@
                             </button>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhp-Ob-yhT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ログイン中です..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgL-zh-yRn">
+                                        <rect key="frame" x="208" y="286" width="184" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="XgL-zh-yRn" secondAttribute="centerX" id="0iJ-BH-7Lh"/>
+                                    <constraint firstAttribute="centerY" secondItem="XgL-zh-yRn" secondAttribute="centerY" id="AJy-9N-Bgj"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,6 +129,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="messageLabel" destination="XgL-zh-yRn" id="6bk-I6-0zU"/>
                         <outlet property="overwrapView" destination="Fhp-Ob-yhT" id="RgA-y7-kVc"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="topViewSegue" id="kmV-xw-pka"/>
                     </connections>

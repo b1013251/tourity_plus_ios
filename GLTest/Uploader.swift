@@ -28,43 +28,84 @@ enum MessageStatus {
 
 /* アップローダに画像、動画、メッセージを送信するクラス*/
 class Uploader : NSObject , NSURLSessionDelegate {
-    //初期化時
+    //初期化すべきメンバ
     var asset : PHAsset!
     var message : String
     var status : MessageStatus
+    var delegate : PostViewController!
     
-    //内部
+    //プライベートメンバ
     private var data : NSData!
     private var type : String!
     private var imageData   : UIImage!
     private var filename = "filename" // 受信側で使われないのでなんでもよろし
     
     
-    //初期化
+    /**
+    PHAssetから初期化（テキストのみの場合）
+    
+    - parameter asset:   画像・動画のアセット
+    - parameter message: メッセージ内容
+    
+    - returns: void
+    */
     init(asset : PHAsset , message : String) {
             self.asset   = asset
             self.message = message
             self.status  = MessageStatus.Text
     }
     
+    
+    /**
+    PHAssetから初期化（画像・動画を含む）
+    
+    - parameter asset:   画像・動画のアセット
+    - parameter message: メッセージ内容
+    - parameter status:  画像か動画か（判別にMessageStatus列挙型を使用）
+    
+    - returns: void
+    */
     init(asset : PHAsset , message: String , status: MessageStatus) {
             self.asset   = asset
             self.message = message
             self.status  = status
     }
     
+    
+    /**
+    送信する生データから初期化
+    
+    - parameter data:    画像・動画のデータ
+    - parameter message: メッセージ内容
+    - parameter status:  画像か動画か
+    
+    - returns: void
+    */
     init(data : NSData , message : String , status:MessageStatus) {
         self.data    = data
         self.message = message
         self.status  = status
     }
     
+    /**
+    メッセージデータのみで初期化
+    
+    - parameter message: メッセージ内容
+    
+    - returns: void
+    */
     init(message : String) {
         self.message = message
         self.status = MessageStatus.Text
     }
     
-    func upload() {
+    /**
+    画像をアップロードする．
+    */
+    func upload(delegate : PostViewController) {
+        //アップロード後に呼び出すクラスの準備
+        self.delegate = delegate
+        
         //アップロードする内容に応じて準備
         let sensor = Sensor.sharedInstance
         
@@ -139,17 +180,21 @@ class Uploader : NSObject , NSURLSessionDelegate {
         
         // エラーが有る場合にはエラーのコードを取得.
         println(error?.code)
+        delegate.uploadFinish()
     }
+
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, willPerformHTTPRedirection response: NSHTTPURLResponse, newRequest request: NSURLRequest, completionHandler: (NSURLRequest!) -> Void) {
         
         println("willPerformHTTPRedirection")
         
     }
+    
+    
+
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
         
         println("didSendBodyData")
-        
     }
     
     // MARK: - プライベート関数群
