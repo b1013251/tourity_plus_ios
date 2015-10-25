@@ -243,7 +243,7 @@
                                     <action selector="backButtonPush:" destination="dTw-8y-hus" eventType="touchUpInside" id="WMu-Io-oz0"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnY-22-g3K">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnY-22-g3K">
                                 <rect key="frame" x="26" y="56" width="408" height="264"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VnY-22-g3K" secondAttribute="height" multiplier="548:535" id="pD1-aO-8Tt"/>
@@ -258,6 +258,12 @@
                                     <action selector="niceButtonPushed:" destination="dTw-8y-hus" eventType="touchUpInside" id="cLS-Fv-FYN"/>
                                 </connections>
                             </button>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pyp-cI-ghv">
+                                <rect key="frame" x="26" y="56" width="408" height="264"/>
+                                <connections>
+                                    <segue destination="pnh-sX-TV5" kind="embed" id="SW7-tK-6PK"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -274,6 +280,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="pyp-cI-ghv" id="K5c-FR-1if"/>
                         <outlet property="detailImage" destination="VnY-22-g3K" id="G0b-Yq-a1t"/>
                         <outlet property="titleLabel" destination="6Be-Ia-44L" id="af6-dI-gYZ"/>
                     </connections>
@@ -281,6 +288,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcm-fv-Xae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2145" y="1083"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="erv-sj-B24">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="pnh-sX-TV5" customClass="PlayVideoController" customModule="GLTest" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIA-uq-KMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2912" y="1083"/>
         </scene>
         <!--My Page Controller-->
         <scene sceneID="elH-Z7-erw">

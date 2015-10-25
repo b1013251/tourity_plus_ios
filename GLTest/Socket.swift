@@ -47,12 +47,13 @@ class Socket{
                 if self.isNotExist(realData[0].objectForKey("post_id") as! Int!) {
                     self.bubblePool.append(realData[0])
                     let poi : POI = POI(
-                        post_id   : realData[0].objectForKey("post_id")   as! Int,
-                        latitude  : realData[0].objectForKey("latitude")  as! Double ,
-                        longitude : realData[0].objectForKey("longitude") as! Double ,
-                        altitude  : realData[0].objectForKey("altitude")  as! Double ,
-                        message   : realData[0].objectForKey("message")   as! String ,
-                        file_path : realData[0].objectForKey("file_path") as! String )
+                        post_id    : realData[0].objectForKey("post_id")     as! Int,
+                        latitude   : realData[0].objectForKey("latitude")    as! Double ,
+                        longitude  : realData[0].objectForKey("longitude")   as! Double ,
+                        altitude   : realData[0].objectForKey("altitude")    as! Double ,
+                        message    : realData[0].objectForKey("message")     as! String ,
+                        file_path  : realData[0].objectForKey("file_path")   as! String ,
+                        posted_time: realData[0].objectForKey("posted_time") as! String)
                     self.delegate.createBubble(poi)
                 }
             }

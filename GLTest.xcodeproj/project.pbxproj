@@ -10,6 +10,7 @@
 		17055F4A1B7CD42E0081B023 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17055F491B7CD42E0081B023 /* PostViewController.swift */; };
 		170755CB1BB9267B008E408E /* BubbleSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170755CA1BB9267B008E408E /* BubbleSprite.swift */; };
 		170755CD1BB94A06008E408E /* DetailBubbleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170755CC1BB94A06008E408E /* DetailBubbleController.swift */; };
+		170E2EAC1BDBDCBD00552D4A /* PlayVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E2EAB1BDBDCBD00552D4A /* PlayVideoController.swift */; };
 		170EB8801BD734B2000146F2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170EB87F1BD734B2000146F2 /* FirstViewController.swift */; };
 		171326631BAE639D00CF6F21 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171326621BAE639D00CF6F21 /* Settings.swift */; };
 		171326651BAEA18F00CF6F21 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171326641BAEA18F00CF6F21 /* Session.swift */; };
@@ -53,6 +54,7 @@
 		17055F491B7CD42E0081B023 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		170755CA1BB9267B008E408E /* BubbleSprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleSprite.swift; sourceTree = "<group>"; };
 		170755CC1BB94A06008E408E /* DetailBubbleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBubbleController.swift; sourceTree = "<group>"; };
+		170E2EAB1BDBDCBD00552D4A /* PlayVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoController.swift; sourceTree = "<group>"; };
 		170EB87F1BD734B2000146F2 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		171326621BAE639D00CF6F21 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		171326641BAEA18F00CF6F21 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = ../Session.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				173CE5541B7B9A2C008B6B47 /* TopViewController.swift */,
 				17DECAB11B7ACA0800678182 /* ViewController.swift */,
 				170755CC1BB94A06008E408E /* DetailBubbleController.swift */,
+				170E2EAB1BDBDCBD00552D4A /* PlayVideoController.swift */,
 				17055F491B7CD42E0081B023 /* PostViewController.swift */,
 				175EED411BA19C0B005D6324 /* PhotoCaptureViewController.swift */,
 				175CAC491B7F1F2F0043DD9C /* VideoRecordViewController.swift */,
@@ -407,6 +410,7 @@
 				170755CB1BB9267B008E408E /* BubbleSprite.swift in Sources */,
 				17E53AF71B81A60F00C2CB87 /* AppendViewController.swift in Sources */,
 				1733AFD81BBC234F005B1C1F /* SocketDelegate.swift in Sources */,
+				170E2EAC1BDBDCBD00552D4A /* PlayVideoController.swift in Sources */,
 				175CAC461B7F09AA0043DD9C /* Uploader.swift in Sources */,
 				171326631BAE639D00CF6F21 /* Settings.swift in Sources */,
 				17DECAD01B7AD39600678182 /* BubbleScene.swift in Sources */,
