@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3kz-Yw-oBJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3kz-Yw-oBJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -25,41 +25,55 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLN-aO-wJU">
-                                <rect key="frame" x="26" y="200" width="100" height="100"/>
+                                <rect key="frame" x="26" y="250" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="RXm-Iz-tmB"/>
-                                    <constraint firstAttribute="width" constant="100" id="vRO-Zl-Pnf"/>
+                                    <constraint firstAttribute="height" constant="100" id="RXm-Iz-tmB">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="100" id="vRO-Zl-Pnf">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="View" backgroundImage="bubble.png"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </variation>
                                 <connections>
                                     <segue destination="SJI-mW-aWX" kind="show" identifier="toMainView" id="uDR-6Y-XHP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9I-OB-5Ya">
-                                <rect key="frame" x="474" y="220" width="100" height="100"/>
+                                <rect key="frame" x="474" y="250" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Oj4-vb-g0J"/>
-                                    <constraint firstAttribute="width" constant="100" id="l2C-gm-SbP"/>
+                                    <constraint firstAttribute="height" constant="100" id="Oj4-vb-g0J">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="100" id="l2C-gm-SbP">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" title="MyPage" backgroundImage="bubble.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="pushMyPage:" destination="BYZ-38-t0r" eventType="touchDown" id="4Di-d6-UYo"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="yND-tG-KsC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="1QQ-kn-XNQ"/>
-                            <constraint firstItem="rLN-aO-wJU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="200" id="IbC-BW-cgU"/>
+                            <constraint firstAttribute="centerY" secondItem="v9I-OB-5Ya" secondAttribute="centerY" id="8iB-8c-XLf"/>
                             <constraint firstAttribute="centerX" secondItem="yND-tG-KsC" secondAttribute="centerX" id="PpB-aX-TNI"/>
+                            <constraint firstItem="rLN-aO-wJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="RVe-oQ-Yci"/>
                             <constraint firstItem="yND-tG-KsC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="TKa-Pf-coA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="v9I-OB-5Ya" secondAttribute="trailing" constant="10" id="WhA-WL-fck"/>
+                            <constraint firstAttribute="centerY" secondItem="rLN-aO-wJU" secondAttribute="centerY" id="Wfn-2x-yYj"/>
                             <constraint firstAttribute="centerX" secondItem="yND-tG-KsC" secondAttribute="centerX" id="c8d-5X-nIH"/>
-                            <constraint firstItem="rLN-aO-wJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="wE2-kd-Cyt"/>
-                            <constraint firstItem="v9I-OB-5Ya" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="200" id="wk9-jw-dwp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v9I-OB-5Ya" secondAttribute="trailing" constant="10" id="nfM-sS-fTc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JeC-wF-mfk"/>
@@ -85,22 +99,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tourity+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKs-19-zkQ">
-                                <rect key="frame" x="269" y="50" width="62" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="265" y="50" width="70" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-xl-NNq">
-                                <rect key="frame" x="235" y="101" width="130" height="30"/>
-                                <state key="normal" title="Sign in with Twitter">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="FuB-bu-oXV" kind="showDetail" id="wJV-ln-kkk"/>
-                                </connections>
-                            </button>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhp-Ob-yhT">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view alpha="0.5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fhp-Ob-yhT">
+                                <rect key="frame" x="0.0" y="381" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ログイン中です..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgL-zh-yRn">
                                         <rect key="frame" x="208" y="286" width="184" height="28"/>
@@ -115,6 +123,15 @@
                                     <constraint firstAttribute="centerY" secondItem="XgL-zh-yRn" secondAttribute="centerY" id="AJy-9N-Bgj"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-xl-NNq">
+                                <rect key="frame" x="229" y="106" width="130" height="30"/>
+                                <state key="normal" title="Sign in with Twitter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FuB-bu-oXV" kind="showDetail" id="wJV-ln-kkk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -235,10 +252,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLB-G6-aFA">
-                                <rect key="frame" x="26" y="10" width="35" height="30"/>
-                                <state key="normal" title="Back">
+                                <rect key="frame" x="26" y="10" width="30" height="30"/>
+                                <state key="normal" title="戻る">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="backButtonPush:" destination="dTw-8y-hus" eventType="touchUpInside" id="WMu-Io-oz0"/>
                                 </connections>
@@ -322,7 +342,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="gWv-Pd-Q1U"/>
@@ -478,7 +498,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2ml-mt-fyt" firstAttribute="top" secondItem="Fbz-01-okv" secondAttribute="bottom" constant="10" id="0KM-31-gmh"/>
                             <constraint firstItem="pc9-ft-xoI" firstAttribute="leading" secondItem="sY8-zR-3kp" secondAttribute="leadingMargin" constant="10" id="0Rn-df-DkK"/>
@@ -534,7 +554,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Iz-5H-7UR">
                                 <rect key="frame" x="26" y="30" width="35" height="30"/>
-                                <color key="backgroundColor" red="0.032413426680000003" green="1" blue="0.046218037369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -542,11 +561,18 @@
                                     <action selector="pushedBackButton:" destination="AkS-Y3-DmO" eventType="touchUpInside" id="OCm-PG-gmE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34n-EX-YYI">
-                                <rect key="frame" x="280" y="494" width="40" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34n-EX-YYI">
+                                <rect key="frame" x="203" y="416" width="131" height="123"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="8on-CP-WP3">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="100" id="RBu-Sw-U7T">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="録画">
+                                <state key="normal" title="録画" backgroundImage="bubble.png">
                                     <color key="titleShadowColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -557,7 +583,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="34n-EX-YYI" secondAttribute="centerX" id="1dM-KG-dxB"/>
-                            <constraint firstItem="HxW-4x-3ge" firstAttribute="top" secondItem="34n-EX-YYI" secondAttribute="bottom" constant="70" id="P3U-eX-Hdd"/>
+                            <constraint firstItem="HxW-4x-3ge" firstAttribute="top" secondItem="34n-EX-YYI" secondAttribute="bottom" constant="30" id="P3U-eX-Hdd"/>
                             <constraint firstItem="7Iz-5H-7UR" firstAttribute="leading" secondItem="IkZ-lr-qvx" secondAttribute="leadingMargin" constant="10" id="Prr-xw-YcA"/>
                             <constraint firstItem="7Iz-5H-7UR" firstAttribute="top" secondItem="oGI-zG-tvK" secondAttribute="bottom" constant="10" id="cZI-pE-zZU"/>
                         </constraints>
@@ -585,7 +611,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fc8-ns-4Vz">
                                 <rect key="frame" x="26" y="30" width="35" height="30"/>
-                                <color key="backgroundColor" red="0.032413426680000003" green="1" blue="0.046218037369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -593,11 +618,18 @@
                                     <action selector="pushedBackButton:" destination="Yzj-Ij-uNi" eventType="touchUpInside" id="wSz-CE-pR3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Heu-m3-4rQ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Heu-m3-4rQ">
                                 <rect key="frame" x="280" y="494" width="40" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Xlv-Q7-pwH">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="100" id="w6X-dn-tFZ">
+                                        <variation key="widthClass=regular" constant="150"/>
+                                    </constraint>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="撮影">
+                                <state key="normal" title="撮影" backgroundImage="bubble.png">
                                     <color key="titleShadowColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
