@@ -16,8 +16,21 @@ class DetailBubbleController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailImage: UIImageView!
     @IBOutlet weak var containerView: UIView!
+    
     @IBAction func niceButtonPushed(sender: AnyObject) {
-        // いいね！
+        //リクエストの生成 TODO: evalの追加
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: Settings.serverURL + "/send_eval")!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = String("post_id=\(poi.post_id)").dataUsingEncoding(NSUTF8StringEncoding)
+        
+        //リクエストの送信
+        var response       : NSURLResponse?
+        var error          : NSError?
+        let responseData   : NSData!   = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response , error: &error)!
+
+        
+        let responseString : NSString = NSString(data:responseData,encoding:1)!
+        println(responseString)
     }
     
     @IBAction func backButtonPush(sender: AnyObject) {
@@ -55,7 +68,7 @@ class DetailBubbleController: UIViewController {
     // 評価数をサーバからもってくる
     func getEvalCount() -> Int {
         //リクエストの生成 TODO: evalの追加
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: Settings.serverURL + "/eval?\(poi.post_id)")!)
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: Settings.serverURL + "/get_eval?post_id=\(poi.post_id)")!)
         request.HTTPMethod = "GET"
         
         //リクエストの送信
@@ -73,31 +86,6 @@ class DetailBubbleController: UIViewController {
         
         return 0
     }
-    
-    //クッキーもってくるやつ！
-    //ISSUE: DRYに反してる
-    private func readCookie() -> [NSHTTPCookie] {
-        let userDefaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var sessionIDCookies = userDefaults.stringForKey("sessionID")
-        
-        if sessionIDCookies == nil {
-            println("クッキーがなかったので")
-            sessionIDCookies = ""
-        }
-        
-        let properties : NSDictionary = NSDictionary(objectsAndKeys:
-            Settings.serverURL    , NSHTTPCookieDomain ,
-            "/"                   , NSHTTPCookiePath   ,
-            "Session-Cookie"      , NSHTTPCookieName   ,
-            sessionIDCookies! , NSHTTPCookieValue
-        )
-        
-        let cookie  :  NSHTTPCookie  = NSHTTPCookie(properties: properties as [NSObject : AnyObject])!
-        let cookies : [NSHTTPCookie] = [
-            cookie
-        ]
-        
-        return cookies
-    }
+
 
 }

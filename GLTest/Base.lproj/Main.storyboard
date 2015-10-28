@@ -109,7 +109,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="XgL-zh-yRn" secondAttribute="centerX" id="0iJ-BH-7Lh"/>
                                     <constraint firstAttribute="centerY" secondItem="XgL-zh-yRn" secondAttribute="centerY" id="AJy-9N-Bgj"/>
@@ -251,7 +251,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EB0-q6-THu">
                                 <rect key="frame" x="549" y="173" width="45" height="30"/>
-                                <state key="normal" title="ええな">
+                                <state key="normal" title="いいね">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -308,7 +308,66 @@
                     <view key="view" contentMode="scaleToFill" id="iTX-ou-zhr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oar-sc-c2h">
+                                <rect key="frame" x="0.0" y="0.0" width="229" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-yw-RdN">
+                                        <rect key="frame" x="21" y="8" width="35" height="30"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pushBackButton:" destination="a8L-z9-Aze" eventType="touchUpInside" id="DTg-7i-FEQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="0.69567754020000006" blue="0.42845149510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="gWv-Pd-Q1U"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEm-kX-15u">
+                                <rect key="frame" x="253" y="60" width="30" height="30"/>
+                                <state key="normal" title="設定">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alA-bG-yjh">
+                                <rect key="frame" x="253" y="98" width="75" height="30"/>
+                                <state key="normal" title="過去の投稿">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLg-YK-FiC">
+                                <rect key="frame" x="253" y="136" width="90" height="30"/>
+                                <state key="normal" title="評価した画像">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="マイページ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJB-7i-gum">
+                                <rect key="frame" x="253" y="20" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hEm-kX-15u" firstAttribute="leading" secondItem="oar-sc-c2h" secondAttribute="trailing" constant="20" id="EPX-aU-d40"/>
+                            <constraint firstItem="oar-sc-c2h" firstAttribute="leading" secondItem="iTX-ou-zhr" secondAttribute="leading" id="ESV-3X-SkZ"/>
+                            <constraint firstItem="If5-ih-MJW" firstAttribute="top" secondItem="oar-sc-c2h" secondAttribute="bottom" id="Es8-2D-kS0"/>
+                            <constraint firstItem="hEm-kX-15u" firstAttribute="top" secondItem="YJB-7i-gum" secondAttribute="bottom" constant="20" id="GqA-8m-m6U"/>
+                            <constraint firstItem="alA-bG-yjh" firstAttribute="leading" secondItem="oar-sc-c2h" secondAttribute="trailing" constant="20" id="HSO-6j-7mc"/>
+                            <constraint firstItem="YJB-7i-gum" firstAttribute="top" secondItem="hAD-eK-h0W" secondAttribute="bottom" constant="20" id="Ln7-TY-z3r"/>
+                            <constraint firstItem="YJB-7i-gum" firstAttribute="top" secondItem="hAD-eK-h0W" secondAttribute="bottom" constant="20" id="Ue6-x7-dc8"/>
+                            <constraint firstItem="alA-bG-yjh" firstAttribute="top" secondItem="hEm-kX-15u" secondAttribute="bottom" constant="20" id="ZU4-8O-ZvW"/>
+                            <constraint firstItem="BLg-YK-FiC" firstAttribute="leading" secondItem="oar-sc-c2h" secondAttribute="trailing" constant="20" id="cOW-3L-FCA"/>
+                            <constraint firstItem="YJB-7i-gum" firstAttribute="leading" secondItem="oar-sc-c2h" secondAttribute="trailing" constant="20" id="jIY-r9-dda"/>
+                            <constraint firstItem="BLg-YK-FiC" firstAttribute="top" secondItem="alA-bG-yjh" secondAttribute="bottom" constant="20" id="y6y-Ec-Wr0"/>
+                            <constraint firstItem="oar-sc-c2h" firstAttribute="top" secondItem="iTX-ou-zhr" secondAttribute="top" id="zxW-bs-lC5"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rX7-UA-MFk" userLabel="First Responder" sceneMemberID="firstResponder"/>

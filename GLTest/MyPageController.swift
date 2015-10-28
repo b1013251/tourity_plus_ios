@@ -9,6 +9,10 @@ import Photos
 
 class MyPageController: UIViewController {
     
+    @IBAction func pushBackButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -17,7 +17,7 @@ class LoginController: UIViewController , UINavigationControllerDelegate, UIWebV
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let url     = NSURL(string: "http://192.168.11.35:3000/auth")!
+        let url     = NSURL(string:  Settings.serverURL + "/auth")!
         let request = NSURLRequest(URL: url)
         webView.delegate = self
         webView.loadRequest(request)
@@ -30,7 +30,7 @@ class LoginController: UIViewController , UINavigationControllerDelegate, UIWebV
     
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        if webView.stringByEvaluatingJavaScriptFromString("document.URL") == "http://192.168.11.35:3000/success" {
+        if webView.stringByEvaluatingJavaScriptFromString("document.URL") == Settings.serverURL + "/success" {
             let cookieStorage : NSHTTPCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
             for cookie in cookieStorage.cookies! {
                 if cookie.name == "connect.sid" {
