@@ -118,7 +118,7 @@ class BubbleScene : SKScene , SocketDelegate  {
         
         
         //当たり判定をつけることにより重ならないようにする
-        node.physicsBody = SKPhysicsBody(circleOfRadius: node.size.width )
+        node.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(node.size.width * 2.0, node.size.height * 2.0))
         
         
         posPOI.append(poi)
