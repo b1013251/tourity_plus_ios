@@ -63,7 +63,7 @@ class BubbleScene : SKScene , SocketDelegate  {
                 
                 
                 let rotateAction  =  SKAction.rotateToAngle(CGFloat(sensor.pitch), duration: NSTimeInterval(0.0))
-                let moveAction    =  SKAction.moveTo(location , duration: NSTimeInterval(0.1))
+                let moveAction    =  SKAction.moveTo(location , duration: NSTimeInterval(1.0))
                 let fadeInAction  =  SKAction.fadeInWithDuration(0.2)
                 
                 bubbleImage[i].hidden = true

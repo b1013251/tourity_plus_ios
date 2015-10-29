@@ -6,16 +6,18 @@
 
 
 import UIKit
-import Fabric
-import TwitterKit
 
 class DetailBubbleController: UIViewController {
     
     var poi : POI! //位置情報
+    var eval_count : String = "0";
+    var eval       : String = "true"
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailImage: UIImageView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var niceButton: UIButton!
+    @IBOutlet weak var messageLabel: UILabel!
     
     @IBAction func niceButtonPushed(sender: AnyObject) {
         //リクエストの生成 TODO: evalの追加
@@ -30,7 +32,15 @@ class DetailBubbleController: UIViewController {
 
         
         let responseString : NSString = NSString(data:responseData,encoding:1)!
-        println(responseString)
+
+        
+        niceButton.setImage(UIImage(named: "star.jpg"), forState: UIControlState.Normal)
+        
+        if(self.eval  != "false") {
+            let plusEval = String("\(self.eval_count.toInt()! + 1)")
+            titleLabel.text = "評価:\(plusEval)"
+        }
+        
     }
     
     @IBAction func backButtonPush(sender: AnyObject) {
@@ -39,7 +49,6 @@ class DetailBubbleController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = "\(poi.post_id) : \(poi.message)"
     }
     
     
@@ -66,8 +75,9 @@ class DetailBubbleController: UIViewController {
             }
         }
         
-        
-        
+        messageLabel.text = self.poi.message
+
+        getEvalCount()
 
     }
     
@@ -80,7 +90,7 @@ class DetailBubbleController: UIViewController {
         //リクエストの送信
         var response       : NSURLResponse?
         var error          : NSError?
-        let responseData   : NSData!   = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response , error: &error)!
+        let responseData   : NSData!   = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response , error: &error)
         
         if let err = error {
             println(err)
@@ -88,6 +98,20 @@ class DetailBubbleController: UIViewController {
         }
         
         let responseString : NSString = NSString(data:responseData,encoding:1)!
+        
+        
+        var jsonError : NSError?
+        var responseJSON  = JSON (data: responseData)
+        
+        var responseCount = responseJSON["count"]
+        self.eval_count   = responseJSON["count"].stringValue
+        self.eval         = responseJSON["eval"].stringValue
+        
+        if responseJSON["eval"].stringValue == "true" {
+            niceButton.setImage(UIImage(named: "star.jpg"), forState: UIControlState.Normal)
+        }
+        
+        titleLabel.text = "評価:\(responseCount)"
         println(responseString)
         
         return 0

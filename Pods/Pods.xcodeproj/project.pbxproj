@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		795C2625AB82E8A150A40A25C5470F6A /* PBXContainerItemProxy */ = {
+		9D26B9865AC3C1E0357CAD71953E44CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -39,22 +39,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		070739CAF8144A28F477F47FB5AC81C9 /* Socket.IO-Client-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Socket.IO-Client-Swift.modulemap"; sourceTree = "<group>"; };
-		0CCCCB6853094C673065C4C24AC1E3A8 /* Socket.IO-Client-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Socket.IO-Client-Swift.xcconfig"; sourceTree = "<group>"; };
+		0F10FDFAD522BCA6742286FC16547D26 /* Socket.IO-Client-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Socket.IO-Client-Swift.xcconfig"; sourceTree = "<group>"; };
 		0F50383A262570A362A1C99D709C71F4 /* SocketAckManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAckManager.swift; path = SocketIOClientSwift/SocketAckManager.swift; sourceTree = "<group>"; };
-		184F6E5A1615D20C58A0F329BE0D0E03 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
-		1B93E8AC3836A0E985AFD1FB31E31FB8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		217C36334945C7A6AC47EE920987ADCD /* SwiftRegex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftRegex.swift; path = SocketIOClientSwift/SwiftRegex.swift; sourceTree = "<group>"; };
 		2B396F02CBEB6431637921D790C67F9D /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		32349AC430B1FEDCC61D9F4DA2752DE6 /* SocketPacket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketPacket.swift; path = SocketIOClientSwift/SocketPacket.swift; sourceTree = "<group>"; };
+		336DDB5B9A1F224EA220041BF82F3682 /* Socket.IO-Client-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Socket.IO-Client-Swift.modulemap"; sourceTree = "<group>"; };
+		3B521F24CC7B4A49CBD2A90D050B03C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D657CA5646576B6FF7392A471CFD067 /* Socket.IO-Client-Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-umbrella.h"; sourceTree = "<group>"; };
 		69066004C4ECE74F7B398F13691CD33F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		7A26A57B5403B9EF62E0652A3F79A4B9 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		841C20D78212C824DBAF0269EB19D137 /* Socket.IO-Client-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-prefix.pch"; sourceTree = "<group>"; };
 		872BCC5C1F61BF0B6C77CA88D61B0633 /* SocketLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketLogger.swift; path = SocketIOClientSwift/SocketLogger.swift; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		8A934E78C52EA0E5203021C6B0E7174F /* TwitterKitResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
-		8C3C7C69C667636D8AADB4C1B6CC533D /* Socket.IO-Client-Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-prefix.pch"; sourceTree = "<group>"; };
 		95FA9EBCB22B0E48CF5483FECE11F8BE /* Socket.IO-Client-Swift-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Socket.IO-Client-Swift-Private.xcconfig"; sourceTree = "<group>"; };
 		9DBFC4469A2D69B443EBBEBFA61A5BF4 /* SocketIOClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClient.swift; path = SocketIOClientSwift/SocketIOClient.swift; sourceTree = "<group>"; };
 		A01549C44408B161FE6FDF16EC15DA01 /* SocketEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngine.swift; path = SocketIOClientSwift/SocketEngine.swift; sourceTree = "<group>"; };
@@ -72,7 +69,6 @@
 		D1770139F7E88D0A6B1B19AB0018429D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE374707B3BEE6D4302218B79B495012 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAnyEvent.swift; path = SocketIOClientSwift/SocketAnyEvent.swift; sourceTree = "<group>"; };
 		DF7A4BBE0CBA57AFE851C2FDD90A3D90 /* SocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = SocketIOClientSwift/SocketTypes.swift; sourceTree = "<group>"; };
-		E5D3936694EFF8054F1CD776375E572B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4B85E619D522E8F66BCA487C6AEA171 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = SocketIOClientSwift/WebSocket.swift; sourceTree = "<group>"; };
@@ -99,52 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0638ADB2CBDEB45AB16B7C6479F9DE8F /* TwitterCore */ = {
+		208234C1CCA394F8AD3F2A8B8E545115 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				59BC606B641786487FFE50F29A13ED90 /* Frameworks */,
-			);
-			path = TwitterCore;
-			sourceTree = "<group>";
-		};
-		109B9DD79A4181284195120D4757BDCD /* Socket.IO-Client-Swift */ = {
-			isa = PBXGroup;
-			children = (
-				0F50383A262570A362A1C99D709C71F4 /* SocketAckManager.swift */,
-				DE374707B3BEE6D4302218B79B495012 /* SocketAnyEvent.swift */,
-				A01549C44408B161FE6FDF16EC15DA01 /* SocketEngine.swift */,
-				C29D70DDE0AE96BBAA30F3765707552D /* SocketEngineClient.swift */,
-				F50313B04AC4D3A6D0494164A1C320C6 /* SocketEventHandler.swift */,
-				B1B4A91B1AA6F97941E849F4E105DAEB /* SocketFixUTF8.swift */,
-				9DBFC4469A2D69B443EBBEBFA61A5BF4 /* SocketIOClient.swift */,
-				872BCC5C1F61BF0B6C77CA88D61B0633 /* SocketLogger.swift */,
-				32349AC430B1FEDCC61D9F4DA2752DE6 /* SocketPacket.swift */,
-				CEF107FE8BE5A92A49CB61D24FB74378 /* SocketParser.swift */,
-				DF7A4BBE0CBA57AFE851C2FDD90A3D90 /* SocketTypes.swift */,
-				217C36334945C7A6AC47EE920987ADCD /* SwiftRegex.swift */,
-				F4B85E619D522E8F66BCA487C6AEA171 /* WebSocket.swift */,
-				46D3B2E5922796B21A972145C4DD3F82 /* Support Files */,
-			);
-			path = "Socket.IO-Client-Swift";
-			sourceTree = "<group>";
-		};
-		3F9403B4E90E913EBD9A59308A5532F7 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				86EC0ED5427B8F13EF2517744CB61994 /* Frameworks */,
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
-		46D3B2E5922796B21A972145C4DD3F82 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E5D3936694EFF8054F1CD776375E572B /* Info.plist */,
-				070739CAF8144A28F477F47FB5AC81C9 /* Socket.IO-Client-Swift.modulemap */,
-				0CCCCB6853094C673065C4C24AC1E3A8 /* Socket.IO-Client-Swift.xcconfig */,
+				3B521F24CC7B4A49CBD2A90D050B03C6 /* Info.plist */,
+				336DDB5B9A1F224EA220041BF82F3682 /* Socket.IO-Client-Swift.modulemap */,
+				0F10FDFAD522BCA6742286FC16547D26 /* Socket.IO-Client-Swift.xcconfig */,
 				95FA9EBCB22B0E48CF5483FECE11F8BE /* Socket.IO-Client-Swift-Private.xcconfig */,
 				CCC35568225774A2524F6FD7FB91034D /* Socket.IO-Client-Swift-dummy.m */,
-				8C3C7C69C667636D8AADB4C1B6CC533D /* Socket.IO-Client-Swift-prefix.pch */,
+				841C20D78212C824DBAF0269EB19D137 /* Socket.IO-Client-Swift-prefix.pch */,
 				5D657CA5646576B6FF7392A471CFD067 /* Socket.IO-Client-Swift-umbrella.h */,
 			);
 			name = "Support Files";
@@ -159,20 +118,12 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		59BC606B641786487FFE50F29A13ED90 /* Frameworks */ = {
+		6B3EC3C236E5661C3100BCA77662052D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				184F6E5A1615D20C58A0F329BE0D0E03 /* TwitterCore.framework */,
+				FCCA6AAE582E4785957E1B73701E309F /* Socket.IO-Client-Swift */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		75B0B515D483FD9E0E174C2BB5C074A6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7A26A57B5403B9EF62E0652A3F79A4B9 /* TwitterKit.framework */,
-			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		75D98FF52E597A11900E131B6C4E1ADA /* Pods */ = {
@@ -198,37 +149,10 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				9585FBD238B151624427A96F9394F1C0 /* Pods */,
+				6B3EC3C236E5661C3100BCA77662052D /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		86EC0ED5427B8F13EF2517744CB61994 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1B93E8AC3836A0E985AFD1FB31E31FB8 /* Fabric.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9585FBD238B151624427A96F9394F1C0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B9FDCCC93D258CA389ADB66318678641 /* Fabric */,
-				109B9DD79A4181284195120D4757BDCD /* Socket.IO-Client-Swift */,
-				0638ADB2CBDEB45AB16B7C6479F9DE8F /* TwitterCore */,
-				F2944BF98A5847825189F2696DFB366D /* TwitterKit */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		B387081E3AEE9756450AA50628FF5653 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8A934E78C52EA0E5203021C6B0E7174F /* TwitterKitResources.bundle */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		B7B80995527643776607AFFA75B91E24 /* Targets Support Files */ = {
@@ -237,14 +161,6 @@
 				75D98FF52E597A11900E131B6C4E1ADA /* Pods */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		B9FDCCC93D258CA389ADB66318678641 /* Fabric */ = {
-			isa = PBXGroup;
-			children = (
-				3F9403B4E90E913EBD9A59308A5532F7 /* Base */,
-			);
-			path = Fabric;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -264,13 +180,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F2944BF98A5847825189F2696DFB366D /* TwitterKit */ = {
+		FCCA6AAE582E4785957E1B73701E309F /* Socket.IO-Client-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				75B0B515D483FD9E0E174C2BB5C074A6 /* Frameworks */,
-				B387081E3AEE9756450AA50628FF5653 /* Resources */,
+				0F50383A262570A362A1C99D709C71F4 /* SocketAckManager.swift */,
+				DE374707B3BEE6D4302218B79B495012 /* SocketAnyEvent.swift */,
+				A01549C44408B161FE6FDF16EC15DA01 /* SocketEngine.swift */,
+				C29D70DDE0AE96BBAA30F3765707552D /* SocketEngineClient.swift */,
+				F50313B04AC4D3A6D0494164A1C320C6 /* SocketEventHandler.swift */,
+				B1B4A91B1AA6F97941E849F4E105DAEB /* SocketFixUTF8.swift */,
+				9DBFC4469A2D69B443EBBEBFA61A5BF4 /* SocketIOClient.swift */,
+				872BCC5C1F61BF0B6C77CA88D61B0633 /* SocketLogger.swift */,
+				32349AC430B1FEDCC61D9F4DA2752DE6 /* SocketPacket.swift */,
+				CEF107FE8BE5A92A49CB61D24FB74378 /* SocketParser.swift */,
+				DF7A4BBE0CBA57AFE851C2FDD90A3D90 /* SocketTypes.swift */,
+				217C36334945C7A6AC47EE920987ADCD /* SwiftRegex.swift */,
+				F4B85E619D522E8F66BCA487C6AEA171 /* WebSocket.swift */,
+				208234C1CCA394F8AD3F2A8B8E545115 /* Support Files */,
 			);
-			path = TwitterKit;
+			path = "Socket.IO-Client-Swift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,7 +251,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				231AD5C26897628350AFE67FFBB16459 /* PBXTargetDependency */,
+				0DE2EAB14E8D7FCD54B9E64A80D1EBC7 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
@@ -390,11 +318,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		231AD5C26897628350AFE67FFBB16459 /* PBXTargetDependency */ = {
+		0DE2EAB14E8D7FCD54B9E64A80D1EBC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Socket.IO-Client-Swift";
 			target = 0B2E2FB3FD2CE52AF625E6299190C17F /* Socket.IO-Client-Swift */;
-			targetProxy = 795C2625AB82E8A150A40A25C5470F6A /* PBXContainerItemProxy */;
+			targetProxy = 9D26B9865AC3C1E0357CAD71953E44CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
