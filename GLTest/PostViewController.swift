@@ -15,8 +15,7 @@ import MobileCoreServices
 import Photos
 
 class PostViewController: UIViewController , UITextFieldDelegate ,
-    UINavigationControllerDelegate ,UIImagePickerControllerDelegate
-    , AppendImageDelegate {
+    UINavigationControllerDelegate ,UIImagePickerControllerDelegate ,UITextViewDelegate, AppendImageDelegate {
 
     //画面コンポーネントと付随するメンバ
     @IBOutlet weak var textView: UITextView!
@@ -46,6 +45,40 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
         performSegueWithIdentifier("appendSegue", sender: self)
     }
     
+    //キーボードを閉じる（同時にプレビュー反映）
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if count(textView.text!) > 6 {
+            var idx: String.Index
+            idx = advance(textView.text!.startIndex,6)
+            
+            previewText.text = textView.text!.substringToIndex(idx) + "..."
+        } else {
+            previewText.text = textView.text!
+        }
+        
+        self.textView.resignFirstResponder() //キーボードを閉じる
+    }
+    
+    
+    //textViewの改行を禁止し，キーボードを閉じるデリゲート
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange,
+        replacementText text: String) -> Bool {
+            if text == "\n" {
+                
+                if count(textView.text!) > 6 {
+                    var idx: String.Index
+                    idx = advance(textView.text!.startIndex,6)
+                    
+                    previewText.text = textView.text!.substringToIndex(idx) + "..."
+                } else {
+                    previewText.text = textView.text!
+                }
+                
+                self.textView.resignFirstResponder() //キーボードを閉じる
+                return false
+            }
+            return true
+    }
     
     //画像を添付（撮影or添付）
     @IBAction func imageButton(sender: AnyObject) {
@@ -165,6 +198,7 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
     // MARK: - ビューコントローラ
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textView.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -215,11 +249,7 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
         }
     }
     
-    //キーボード
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        previewText.text = textView.text!
-        self.textView.resignFirstResponder()
-    }
+
 }
 
 

@@ -109,7 +109,15 @@ class BubbleScene : SKScene , SocketDelegate  {
         label.position  =  CGPointMake( 0 , 0 )
         label.alpha     =  1.0
         label.zPosition =  label.zPosition + 1
-        label.text      =  poi.message
+        
+        if count(poi.message) > 6 {
+            var idx: String.Index
+            idx = advance(poi.message.startIndex,6)
+            
+            label.text = poi.message.substringToIndex(idx) + "..."
+        } else {
+            label.text = poi.message
+        }
         
         
         //シーンにバブルを追加する
