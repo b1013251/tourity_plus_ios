@@ -11,7 +11,7 @@ import UIKit
 class ARHelper {
     
     static let VIEW_ANGLE : Double  =  M_PI / 6.0 //30°
-    static let NOT_EXIST  : Double  =  184
+    static let NOT_EXIST  : Double  =  1000
     static let EARTH_R    : Double  = 6371
     
     
@@ -20,12 +20,23 @@ class ARHelper {
         
         let angle = getAngle(viewLat: viewPOI.latitude, viewLon: viewPOI.longitude
             , posLat: posPOI.latitude , posLon: posPOI.longitude)
-        let trueHeading = degToRad(fmod(heading,360.0))
+        let trueHeading = degToRad(getRegularAngle(heading))
         var target_azimuth = trueHeading - angle
-    
+
         
-        if target_azimuth < VIEW_ANGLE && (-VIEW_ANGLE) < target_azimuth {
-            //println(" exist \( radToDeg(target_azimuth) )")
+        //正規化
+        if target_azimuth <= (-1.0) * M_PI {
+            target_azimuth += 2 * M_PI
+        }
+        
+        if target_azimuth >= ( M_PI) {
+            target_azimuth -= 2 * M_PI
+        }
+        
+        
+        if getRegularRad(target_azimuth) < VIEW_ANGLE && (-VIEW_ANGLE) < getRegularRad(target_azimuth) {
+            
+            
             return radToDeg(target_azimuth)
         } else {
             //println("")
@@ -34,27 +45,40 @@ class ARHelper {
     }
     
     class func getVerticalAngle(#viewPOI : POI , posPOI : POI) -> Double {
-        let radialDistance = sqrt(
-            pow( viewPOI.altitude - posPOI.altitude , 2 ) +
-            pow( self.getDistance(viewLat: viewPOI.latitude, viewLon: viewPOI.longitude, posLat: posPOI.latitude, posLon: posPOI.longitude) , 2)
-        )
-        var angle  = sin(  Double.abs(viewPOI.altitude - posPOI.altitude) / radialDistance )
-        
-        if( viewPOI.altitude > posPOI.altitude ) {
-            angle = -angle
-        }
+        let angle =
+            atan2( viewPOI.altitude - posPOI.altitude,
+            getDistance(viewLat: viewPOI.latitude, viewLon: viewPOI.longitude, posLat: posPOI.latitude, posLon: posPOI.longitude))
         
         return angle
     }
     
-
+    /**
+    0 <= x < 360から -180 < 0 <= 180に角度を変更する
+    
+    - parameter angle: 0 <= x < 360の角度
+    */
+    class func getRegularAngle(angle : Double ) -> Double {
+        if angle <= 180 {
+            return angle
+        } else {
+            return angle - 360
+        }
+    }
+    
+    class func getRegularRad(rad : Double) -> Double {
+        if rad <= M_PI {
+            return rad
+        } else {
+            return rad - 2 * M_PI
+        }
+    }
     
     // プライベート関数
     class private func getAngle(#viewLat : Double , viewLon : Double , posLat : Double , posLon : Double) -> Double {
         
         let lonDiff = degToRad(posLon - viewLon)
         let latDiff = degToRad(posLat - viewLat)
-        let azimuth = (M_PI * 0.5) - atan(latDiff / lonDiff)
+        let azimuth = (M_PI_2) - atan(latDiff / lonDiff)
         
         if lonDiff > 0 {
             return azimuth
@@ -86,17 +110,17 @@ class ARHelper {
         return (dx : dx , dy : dy)
     }
     
-    class private func degToRad(degree : Double) -> Double {
+    class func degToRad(degree : Double) -> Double {
         return degree * M_PI / 180.0
     }
     
-    class private func radToDeg(radian : Double) -> Double {
+    class func radToDeg(radian : Double) -> Double {
         return radian * 180.0 / M_PI
     }
     
     class private func diffAngle(rad1 : Double , rad2 : Double) -> Double {
         return  ( rad2 - rad1 )
     }
-    
+
     
 }

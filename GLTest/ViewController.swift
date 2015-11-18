@@ -28,6 +28,13 @@ class ViewController: UIViewController , DetailDelegate{
     var roll      : Double = 0.0
     var pitch     : Double = 0.0
     
+    //ボタン
+    @IBOutlet weak var listButton: UIButton!
+    
+    @IBAction func listButtonPushed(sender: AnyObject) {
+        //よこからぴゅーっと出てくる
+    }
+    
     //その他
     var poiForSendingDetail : POI! //詳細画面に遷移する際に送るPOIの入れ物
 
@@ -59,7 +66,7 @@ class ViewController: UIViewController , DetailDelegate{
         
         self.view.bringSubviewToFront(postButtonOutlet)
         self.view.bringSubviewToFront(backButton)
-        
+        self.view.bringSubviewToFront(listButton)
     }
     
     

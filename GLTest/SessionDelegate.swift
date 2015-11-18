@@ -4,9 +4,11 @@
 
 */
 
+/*
 import Foundation
 
 protocol SessionDelegate {
     func sessionSuccess() //セッションIDが一致（ログインしていたら）
     func sessionFailure()
 }
+*/

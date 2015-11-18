@@ -6,9 +6,20 @@
 
 
 import UIKit
+import AVFoundation
 
 class DetailBubbleController: UIViewController {
     
+    
+    // MARK: - カメラ
+    var cameraDevice :AVCaptureDevice!
+    var cameraSession:AVCaptureSession!
+    var cameraImage  :AVCaptureStillImageOutput!
+    var videoLayer   : AVCaptureVideoPreviewLayer!
+    
+    @IBOutlet weak var videoView: UIView!
+    
+    //バブル関連
     var poi : POI! //位置情報
     var eval_count : String = "0";
     var eval       : String = "true"
@@ -34,7 +45,7 @@ class DetailBubbleController: UIViewController {
         let responseString : NSString = NSString(data:responseData,encoding:1)!
 
         
-        niceButton.setImage(UIImage(named: "star.jpg"), forState: UIControlState.Normal)
+        niceButton.setImage(UIImage(named: "star.png"), forState: UIControlState.Normal)
         
         if(self.eval  != "false") {
             let plusEval = String("\(self.eval_count.toInt()! + 1)")
@@ -55,8 +66,10 @@ class DetailBubbleController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.cameraInit()
+        cameraSession.startRunning()
+        
         //画像を持ってくる
-
         if ( poi.file_path != "" ) {
             let file_name = poi.file_path.componentsSeparatedByString("/")[1]
             let url = NSURL(string: "\(Settings.serverURL)/\(file_name)")
@@ -76,10 +89,15 @@ class DetailBubbleController: UIViewController {
         }
         
         messageLabel.text = self.poi.message
-
         getEvalCount()
-
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        cameraSession.stopRunning()
+        videoLayer.removeFromSuperlayer()
+    }
+    
     
     // 評価数をサーバからもってくる
     func getEvalCount() -> Int {
@@ -108,13 +126,46 @@ class DetailBubbleController: UIViewController {
         self.eval         = responseJSON["eval"].stringValue
         
         if responseJSON["eval"].stringValue == "true" {
-            niceButton.setImage(UIImage(named: "star.jpg"), forState: UIControlState.Normal)
+            niceButton.setImage(UIImage(named: "star.png"), forState: UIControlState.Normal)
         }
         
         titleLabel.text = "評価:\(responseCount)"
         println(responseString)
         
         return 0
+    }
+    
+    // MARK : -カメラ初期化
+    private func cameraInit() {
+        //初期化処理
+        cameraSession = AVCaptureSession()
+        
+        //デバイスの取得し背面カメラを指定
+        let devices = AVCaptureDevice.devices()
+        for device in devices {
+            if ( device.position == AVCaptureDevicePosition.Back) {
+                cameraDevice = device as! AVCaptureDevice
+            }
+        }
+        
+        //入力を指定して追加
+        let videoInput = AVCaptureDeviceInput.deviceInputWithDevice(cameraDevice, error: nil) as! AVCaptureDeviceInput
+        cameraSession.addInput(videoInput)
+        
+        //出力先を指定して追加
+        cameraImage = AVCaptureStillImageOutput()
+        cameraSession.addOutput(cameraImage)
+        
+        
+        //画像表示レイヤ
+        videoLayer = AVCaptureVideoPreviewLayer.layerWithSession(cameraSession) as! AVCaptureVideoPreviewLayer
+        videoLayer.connection.videoOrientation = AVCaptureVideoOrientation.LandscapeRight
+        videoLayer.frame = self.view.bounds
+        videoLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        
+        //レイヤを追加
+        videoView.layer.addSublayer(videoLayer)
+        
     }
 
 

@@ -33,7 +33,7 @@ class Socket{
         let sensor : Sensor = Sensor.sharedInstance
         latitude  = sensor.latitude
         longitude = sensor.longitude
-        self.socket = SocketIOClient(socketURL: Settings.socketURL , options: nil)
+        self.socket = SocketIOClient(socketURL: Settings.serverURL , options: nil)
         
         //接続時の処理
         self.socket.on("connect" ,callback: { data , ack in
