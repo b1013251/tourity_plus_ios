@@ -38,6 +38,7 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         self.size.height = view.bounds.height
         self.size.width  = view.bounds.width
         self.physicsWorld.gravity = CGVectorMake(0,0)
+        self.physicsWorld.contactDelegate = self
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -58,6 +59,7 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         
         for ( var i = 0 ; i < posPOI.count ; i++ ) {
             let place : Double = ( ARHelper.isExist(viewPOI: viewPOI, posPOI: posPOI[i] , heading: realHeading) )
+            
             
             if place != ARHelper.NOT_EXIST { //存在していれば
                 //println(place)
@@ -87,10 +89,15 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
                     self.bubbleImage[i].hidden = false
                 }
                 */
+                bubbleImage[i].physicsBody = SKPhysicsBody(circleOfRadius: (bubbleImage[i].size.width) )
+                bubbleImage[i].physicsBody?.categoryBitMask = 0x1
+                bubbleImage[i].physicsBody?.collisionBitMask = 0x1 << 1
+                bubbleImage[i].physicsBody?.contactTestBitMask = 0x1 | 0x1 << 1
                 bubbleImage[i].hidden = false
                 
             } else {
                 bubbleImage[i].hidden = true
+                bubbleImage[i].physicsBody = nil
             }
         }
         
@@ -114,13 +121,12 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         //node.rand     = Int(arc4random() % 100 ) - 49
         
         
-        
         //文字部分
         let label : SKLabelNode = SKLabelNode(fontNamed:"HiraKakuProN-W3")
         label.fontSize  =  50
         label.position  =  CGPointMake( 0 , 0 )
         label.alpha     =  1.0
-        label.zPosition =  label.zPosition + 1
+        label.zPosition =  20
         
         //6文字以上を...に変換
         if count(poi.message) > 6 {
@@ -132,15 +138,35 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
             label.text = poi.message
         }
         
-        //衝突時に位置をランダムで移動
-        self.physicsWorld.contactDelegate = self
-        node.physicsBody = SKPhysicsBody(circleOfRadius: (node.size.width) * 1.5)
-        node.physicsBody?.categoryBitMask = 0x1
-        node.physicsBody?.collisionBitMask = 0x1 << 1
-        node.physicsBody?.contactTestBitMask = 0x1 | 0x1 << 1
-
+        //サムネイルを表示
+        let thumbPath = poi.file_path
+        println(thumbPath)
+        
+        var image : UIImage!
+        let file_name = poi.file_path.componentsSeparatedByString("/")[1]
+        
+        //画像なら取得，動画なら適当な画像
+        let file_type = file_name.componentsSeparatedByString(".")[1]
+        if file_type == "jpg" {
+            let url = NSURL(string: "\(Settings.serverURL)/\(file_name)")
+            let mediaData :NSData = NSData(contentsOfURL: url!)!
+            image = UIImage(data:mediaData)
+        } else if file_type == "mp4" {
+            image = UIImage(named: "mthumb")
+        }
+        
+        if file_type == "jpg" || file_type == "mp4" {
+            let thumb : SKSpriteNode = SKSpriteNode(texture: SKTexture(image: image), size: CGSizeMake(200, 150))
+            thumb.zPosition = 10
+            thumb.position = CGPointMake(0 , -100)
+            node.addChild(thumb)
+        }
         
         //シーンにバブルを追加する
+        
+        posPOI.append(poi)
+        bubbleImage.append(node)
+        
         node.addChild(label)
         self.addChild(node)
         
@@ -149,12 +175,15 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         //node.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(node.size.width , node.size.height ))
         
         
-        posPOI.append(poi)
-        bubbleImage.append(node)
     }
+    
 
+    /**
+    衝突時に呼ばれ，古い方のバブルを消す…
+    
+    - parameter contact: ノードを取り出すオブジェクト
+    */
     func didBeginContact(contact: SKPhysicsContact) {
-        println("衝突! ---- !!!")
         
         let dateString1 = (contact.bodyA.node as! BubbleSprite).poi.posted_time
         let dateString2 = (contact.bodyB.node as! BubbleSprite).poi.posted_time
@@ -171,33 +200,22 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         default:
             break
         }
-        
-        //println((contact.bodyA.node as! BubbleSprite).poi.posted_time)
-        //println((contact.bodyB.node as! BubbleSprite).poi.posted_time)
-        
-        /*
-        for var i = 0; i < posPOI.count; i++ {
-            if contact.bodyA.node?.name == posPOI[i].message {
-                posPOI.removeAtIndex(i)
-                break
-            }
-        }
-        */
-        
-        //(contact.bodyA.node as! BubbleSprite).poi.latitude  +=  0.00001 * Double(Int(arc4random() % 6) - 6)
-        //(contact.bodyA.node as! BubbleSprite).poi.longitude +=  0.00001 * Double(Int(arc4random() % 6) - 6)
-        //contact.bodyA.node?.alpha = 0.0
-        //contact.bodyB.node?.alpha = 1.0
-        //contact.bodyA.node?.removeFromParent()
-        //contact.bodyA.node?.alpha = 0.0
-        //contact.bodyB.node?.alpha = 1.0
-    }
+
     
-    /*
-        時刻を比較してその結果を返す
-        -1 : 小さい
-         0 : 同じ
-        +1 : 大きい
+    }
+
+    
+    /**
+    
+    時刻を比較してその結果を返す
+    -1 : 小さい
+    0 : 同じ
+    +1 : 大きい
+    
+    - parameter dateString1: 比較対象1（MySQLの形式で文字列を渡す）
+    - parameter dateString2: 比較対象2（MySQLの形式で文字列を渡す）
+    
+    - returns: -1,0,1で大小関係を返す
     */
     private func compareDate(dateString1 : String, dateString2 : String) -> Int {
         let format : NSDateFormatter = NSDateFormatter()
@@ -205,10 +223,7 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         
         var date1 = format.dateFromString(dateString1)
         var date2 = format.dateFromString(dateString2)
-        
-        println(dateString1)
-        println(dateString2)
-        
+
         if date1!.compare(date2!) == NSComparisonResult.OrderedAscending {
             return -1
         } else if date1!.compare(date2!) == NSComparisonResult.OrderedDescending {
@@ -218,11 +233,19 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         }
     }
     
+    
+    /**
+    投稿IDに合致するバブルを消す
+    
+    - parameter id: 投稿ID
+    */
     private func removeByPostID(id : Int) {
         var num : Int = 0
         for poi in posPOI {
             if poi.post_id == id {
+                bubbleImage[num].removeFromParent()
                 posPOI.removeAtIndex(num)
+                bubbleImage.removeAtIndex(num)
             }
             num++
         }

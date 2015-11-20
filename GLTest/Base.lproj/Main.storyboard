@@ -264,15 +264,6 @@
                                 <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.png" translatesAutoresizingMaskIntoConstraints="NO" id="kg0-az-aCC">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="aBD-wt-paB"/>
-                                    <constraint firstAttribute="height" constant="300" id="aqD-Dq-X6d"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="cYZ-K8-88y"/>
-                                    <constraint firstAttribute="width" constant="300" id="iZG-6A-ClN"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="　　" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Be-Ia-44L">
                                 <rect key="frame" x="497" y="491" width="82" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -285,6 +276,15 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.png" translatesAutoresizingMaskIntoConstraints="NO" id="kg0-az-aCC">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="aBD-wt-paB"/>
+                                    <constraint firstAttribute="height" constant="300" id="aqD-Dq-X6d"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="cYZ-K8-88y"/>
+                                    <constraint firstAttribute="width" constant="300" id="iZG-6A-ClN"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLB-G6-aFA">
                                 <rect key="frame" x="26" y="10" width="30" height="30"/>
                                 <state key="normal" title="戻る">

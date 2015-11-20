@@ -22,6 +22,10 @@
 		173CE5551B7B9A2C008B6B47 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173CE5541B7B9A2C008B6B47 /* TopViewController.swift */; };
 		173E37A41BE2185500E12AC8 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 173E37A31BE2185500E12AC8 /* star.png */; };
 		173E37A61BE2199F00E12AC8 /* star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 173E37A51BE2199F00E12AC8 /* star_gray.png */; };
+		17458CD51BFF68F30040D79F /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17458CD41BFF68F30040D79F /* sample.jpg */; };
+		17458CD71BFF6C940040D79F /* mov_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 17458CD61BFF6C940040D79F /* mov_thumb.png */; };
+		17458CD91BFF6FE20040D79F /* mthumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 17458CD81BFF6FE20040D79F /* mthumb.png */; };
+		17458CDB1BFF730E0040D79F /* yuno.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17458CDA1BFF730E0040D79F /* yuno.jpg */; };
 		175CAC461B7F09AA0043DD9C /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CAC451B7F09AA0043DD9C /* Uploader.swift */; };
 		175CAC4A1B7F1F2F0043DD9C /* VideoRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175CAC491B7F1F2F0043DD9C /* VideoRecordViewController.swift */; };
 		175EED421BA19C0B005D6324 /* PhotoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EED411BA19C0B005D6324 /* PhotoCaptureViewController.swift */; };
@@ -70,6 +74,10 @@
 		173CE5541B7B9A2C008B6B47 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		173E37A31BE2185500E12AC8 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		173E37A51BE2199F00E12AC8 /* star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_gray.png; sourceTree = "<group>"; };
+		17458CD41BFF68F30040D79F /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		17458CD61BFF6C940040D79F /* mov_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mov_thumb.png; sourceTree = "<group>"; };
+		17458CD81BFF6FE20040D79F /* mthumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mthumb.png; sourceTree = "<group>"; };
+		17458CDA1BFF730E0040D79F /* yuno.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yuno.jpg; sourceTree = "<group>"; };
 		175CAC451B7F09AA0043DD9C /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		175CAC491B7F1F2F0043DD9C /* VideoRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecordViewController.swift; sourceTree = "<group>"; };
 		175EED411BA19C0B005D6324 /* PhotoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +247,10 @@
 				173E37A31BE2185500E12AC8 /* star.png */,
 				173E37A51BE2199F00E12AC8 /* star_gray.png */,
 				173C27B31BFC11BA00E659F2 /* listbutton.png */,
+				17458CD81BFF6FE20040D79F /* mthumb.png */,
+				17458CDA1BFF730E0040D79F /* yuno.jpg */,
+				17458CD61BFF6C940040D79F /* mov_thumb.png */,
+				17458CD41BFF68F30040D79F /* sample.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -345,9 +357,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17458CD91BFF6FE20040D79F /* mthumb.png in Resources */,
 				173E37A61BE2199F00E12AC8 /* star_gray.png in Resources */,
 				17DECAB51B7ACA0800678182 /* Main.storyboard in Resources */,
 				173E37A41BE2185500E12AC8 /* star.png in Resources */,
+				17458CD71BFF6C940040D79F /* mov_thumb.png in Resources */,
+				17458CD51BFF68F30040D79F /* sample.jpg in Resources */,
+				17458CDB1BFF730E0040D79F /* yuno.jpg in Resources */,
 				17DECADC1B7AE7C700678182 /* bubble.png in Resources */,
 				173C27B41BFC11BA00E659F2 /* listbutton.png in Resources */,
 				17DECABA1B7ACA0800678182 /* LaunchScreen.xib in Resources */,
