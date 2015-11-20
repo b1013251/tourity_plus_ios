@@ -133,7 +133,6 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         }
         
         //衝突時に位置をランダムで移動
-        
         self.physicsWorld.contactDelegate = self
         node.physicsBody = SKPhysicsBody(circleOfRadius: (node.size.width) * 1.5)
         node.physicsBody?.categoryBitMask = 0x1
@@ -156,8 +155,25 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
 
     func didBeginContact(contact: SKPhysicsContact) {
         println("衝突! ---- !!!")
-        println((contact.bodyA.node as! BubbleSprite).poi.posted_time)
-        println((contact.bodyB.node as! BubbleSprite).poi.posted_time)
+        
+        let dateString1 = (contact.bodyA.node as! BubbleSprite).poi.posted_time
+        let dateString2 = (contact.bodyB.node as! BubbleSprite).poi.posted_time
+        
+        switch self.compareDate(dateString1, dateString2: dateString2) {
+        case -1 :
+            self.removeByPostID((contact.bodyA.node as! BubbleSprite).poi.post_id)
+            break
+        case 1 :
+            self.removeByPostID((contact.bodyB.node as! BubbleSprite).poi.post_id)
+            break
+        case 0 :
+            break
+        default:
+            break
+        }
+        
+        //println((contact.bodyA.node as! BubbleSprite).poi.posted_time)
+        //println((contact.bodyB.node as! BubbleSprite).poi.posted_time)
         
         /*
         for var i = 0; i < posPOI.count; i++ {
@@ -168,13 +184,48 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         }
         */
         
-        (contact.bodyA.node as! BubbleSprite).poi.latitude  +=  0.00001 * Double(Int(arc4random() % 6) - 6)
-        (contact.bodyA.node as! BubbleSprite).poi.longitude +=  0.00001 * Double(Int(arc4random() % 6) - 6)
+        //(contact.bodyA.node as! BubbleSprite).poi.latitude  +=  0.00001 * Double(Int(arc4random() % 6) - 6)
+        //(contact.bodyA.node as! BubbleSprite).poi.longitude +=  0.00001 * Double(Int(arc4random() % 6) - 6)
         //contact.bodyA.node?.alpha = 0.0
         //contact.bodyB.node?.alpha = 1.0
         //contact.bodyA.node?.removeFromParent()
         //contact.bodyA.node?.alpha = 0.0
         //contact.bodyB.node?.alpha = 1.0
+    }
+    
+    /*
+        時刻を比較してその結果を返す
+        -1 : 小さい
+         0 : 同じ
+        +1 : 大きい
+    */
+    private func compareDate(dateString1 : String, dateString2 : String) -> Int {
+        let format : NSDateFormatter = NSDateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        
+        var date1 = format.dateFromString(dateString1)
+        var date2 = format.dateFromString(dateString2)
+        
+        println(dateString1)
+        println(dateString2)
+        
+        if date1!.compare(date2!) == NSComparisonResult.OrderedAscending {
+            return -1
+        } else if date1!.compare(date2!) == NSComparisonResult.OrderedDescending {
+            return 1
+        } else {
+            return 0
+        }
+    }
+    
+    private func removeByPostID(id : Int) {
+        var num : Int = 0
+        for poi in posPOI {
+            if poi.post_id == id {
+                posPOI.removeAtIndex(num)
+            }
+            num++
+        }
     }
 }
 
