@@ -52,8 +52,10 @@ code_sign_if_enabled() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework 'Pods/SlideMenuControllerSwift.framework'
   install_framework 'Pods/Socket_IO_Client_Swift.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework 'Pods/SlideMenuControllerSwift.framework'
   install_framework 'Pods/Socket_IO_Client_Swift.framework'
 fi

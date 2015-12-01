@@ -20,7 +20,7 @@ class PhotoCaptureViewController: UIViewController  {
     
     @IBOutlet weak var backButton: UIButton!
     @IBAction func pushedBackButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -62,7 +62,7 @@ class PhotoCaptureViewController: UIViewController  {
                 self.delegate.returnData(image, url: pathURL, rawData: writeData , mediaType : PHAssetMediaType.Image)
             }
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.navigationController?.popViewControllerAnimated(true)
         })
     }
     

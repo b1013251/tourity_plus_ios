@@ -83,7 +83,7 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
     //画像を添付（撮影or添付）
     @IBAction func imageButton(sender: AnyObject) {
         let alert : UIAlertController =
-        UIAlertController(title: "添付or撮影", message: "どうするよ",
+        UIAlertController(title: "添付or撮影", message: "どうしますか．",
             preferredStyle:UIAlertControllerStyle.Alert)
         let appendAction : UIAlertAction =
         UIAlertAction(title: "アルバムから添付", style: UIAlertActionStyle.Default,
@@ -114,7 +114,7 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
     //動画を添付（撮影or添付）
     @IBAction func videoButton(sender: AnyObject) {
         let alert : UIAlertController =
-            UIAlertController(title: "添付or録画", message: "どうするよ",
+            UIAlertController(title: "添付or録画", message: "どうしますか。",
                 preferredStyle:UIAlertControllerStyle.Alert)
         let appendAction : UIAlertAction =
         UIAlertAction(title: "アルバムから添付", style: UIAlertActionStyle.Default,
@@ -144,7 +144,7 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
     
     //戻るボタン
     @IBAction func pushedBackButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     //投稿ボタン
@@ -191,7 +191,7 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
     }
     
     func uploadFinish() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -203,6 +203,8 @@ class PostViewController: UIViewController , UITextFieldDelegate ,
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.slideMenuController()?.removeLeftGestures()
+        
         if self.imageData != nil {
             self.previewImage.image = imageData
         }

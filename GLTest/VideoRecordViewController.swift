@@ -20,10 +20,16 @@ class VideoRecordViewController: UIViewController , AVCaptureFileOutputRecording
     
     var delegate : AppendImageDelegate! = nil
     
+    
+    //時間制限用
+    var count : Float = 0
+    var timer : NSTimer!
+    @IBOutlet weak var timerLabel: UILabel!
+    
   
     @IBOutlet weak var backButton: UIButton!
     @IBAction func pushedBackButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -107,10 +113,15 @@ class VideoRecordViewController: UIViewController , AVCaptureFileOutputRecording
         
         self.view.bringSubviewToFront(recordButton)
         self.view.bringSubviewToFront(backButton)
+        self.view.bringSubviewToFront(timerLabel)
     }
     
+    
+    //録画開始時に発動される
     func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
         println("recording starts")
+        
+        NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "timerCount:", userInfo: nil, repeats: true)
     }
     
     
@@ -137,8 +148,20 @@ class VideoRecordViewController: UIViewController , AVCaptureFileOutputRecording
             self.delegate.returnData(image!, url: pathURL, rawData: writeData , mediaType : PHAssetMediaType.Video)
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
         
+    }
+    
+    func timerCount(timer : NSTimer) {
+        self.count += 0.1
+        timerLabel.text = "\(count)"
+        
+        if count > 6.0 {
+            count = 6.0
+            timerLabel.text = "\(count)"
+            timer.invalidate()
+            videoOutput.stopRecording()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -147,49 +170,3 @@ class VideoRecordViewController: UIViewController , AVCaptureFileOutputRecording
     }
     
 }
-
-/*
-
-func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
-println("recording finished")
-
-let asset : AVURLAsset = AVURLAsset(URL: outputFileURL, options: nil)
-let imageGenerator : AVAssetImageGenerator = AVAssetImageGenerator(asset: asset)
-imageGenerator.appliesPreferredTrackTransform = true
-let cutPoint   : CMTime = CMTimeMake(0, 30)
-let actualTime : CMTime = CMTimeMake(0, 30)
-let imageRef : CGImageRef!
-= imageGenerator.copyCGImageAtTime(asset.duration, actualTime: nil, error: nil)
-let image = UIImage(CGImage: imageRef)
-
-
-let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-
-
-// フォルダ.
-let documentsDirectory = paths[0] as! String
-
-// ファイル名.
-let filePath : String? = "\(documentsDirectory)/test.jpg"
-
-// URL.
-let fileURL : NSURL = NSURL(fileURLWithPath: filePath!)!
-
-let writeData : NSData = UIImageJPEGRepresentation(image, 0.9)
-
-if writeData.writeToFile(filePath!, atomically: true) {
-println("successed")
-} else {
-println("failed")
-}
-
-if let path = self.filePath {
-let pathURL = NSURL(fileURLWithPath: path)!
-self.delegate.returnData(image!, url: pathURL, rawData: writeData , mediaType : PHAssetMediaType.Video)
-}
-
-self.dismissViewControllerAnimated(true, completion: nil)
-
-}
-
-*/

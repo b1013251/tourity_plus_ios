@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SlideMenuControllerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Socket.IO-Client-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +27,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A09AA1F2AA712376FC07916BB75EDB4</key>
+		<key>7A35E3E002D7B52CC96C7A5C8826A951</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0A09BC6998B779A79B44988A0EBE3EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

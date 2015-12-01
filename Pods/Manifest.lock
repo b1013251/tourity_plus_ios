@@ -1,10 +1,24 @@
 PODS:
+  - SlideMenuControllerSwift (1.2.3)
   - Socket.IO-Client-Swift (2.4.5)
 
 DEPENDENCIES:
+  - SlideMenuControllerSwift (from `https://github.com/dekatotoro/SlideMenuControllerSwift.git`,
+    branch `swift1.2`)
   - Socket.IO-Client-Swift (~> 2.4.3)
 
+EXTERNAL SOURCES:
+  SlideMenuControllerSwift:
+    :branch: swift1.2
+    :git: https://github.com/dekatotoro/SlideMenuControllerSwift.git
+
+CHECKOUT OPTIONS:
+  SlideMenuControllerSwift:
+    :commit: 326801221cf5f2283680d348bdb1169db57f5084
+    :git: https://github.com/dekatotoro/SlideMenuControllerSwift.git
+
 SPEC CHECKSUMS:
+  SlideMenuControllerSwift: a0ca252f34956d5bfe8259e03ad987cac91d2a74
   Socket.IO-Client-Swift: 461a98fde2b27b61f5c833889a577d0824bd5ee4
 
 COCOAPODS: 0.38.2

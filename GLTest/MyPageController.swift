@@ -10,7 +10,7 @@ import Photos
 class MyPageController: UIViewController {
     
     @IBAction func pushBackButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewDidLoad() {

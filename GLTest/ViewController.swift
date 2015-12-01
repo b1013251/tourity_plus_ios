@@ -27,27 +27,26 @@ class ViewController: UIViewController , DetailDelegate{
     var yaw       : Double = 0.0
     var roll      : Double = 0.0
     var pitch     : Double = 0.0
-    
-    //ボタン
-    @IBOutlet weak var listButton: UIButton!
-    
-    @IBAction func listButtonPushed(sender: AnyObject) {
-        //よこからぴゅーっと出てくる
-    }
+  
     
     //その他
     var poiForSendingDetail : POI! //詳細画面に遷移する際に送るPOIの入れ物
+    
+    @IBOutlet weak var listButton: UIButton!
+    @IBAction func listButtonPushed(sender: AnyObject) {
+        self.slideMenuController()?.openLeft()
+    }
 
     //ボタンを押して
     @IBOutlet weak var postButtonOutlet: UIButton!
     @IBAction func postButton(sender: AnyObject) {
-        
+        performSegueWithIdentifier("PostViewSegue", sender: true)
     }
     
     //バックボタン
     @IBOutlet weak var backButton: UIButton!
     @IBAction func pushedBackButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -59,6 +58,7 @@ class ViewController: UIViewController , DetailDelegate{
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.slideMenuController()?.addLeftGestures()
         
         cameraInit()
         cameraSession.startRunning()

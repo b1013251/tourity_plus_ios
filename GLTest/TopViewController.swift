@@ -32,6 +32,13 @@ class TopViewController: UIViewController  {
         sensor.start()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.slideMenuController()?.removeLeftGestures()
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

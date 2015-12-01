@@ -14,6 +14,8 @@ class FirstViewController: UIViewController , NSURLSessionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBarHidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
