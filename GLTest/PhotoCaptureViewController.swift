@@ -62,6 +62,8 @@ class PhotoCaptureViewController: UIViewController  {
                 self.delegate.returnData(image, url: pathURL, rawData: writeData , mediaType : PHAssetMediaType.Image)
             }
             
+            
+            
             self.navigationController?.popViewControllerAnimated(true)
         })
     }

@@ -139,27 +139,31 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         }
         
         //サムネイルを表示
-        let thumbPath = poi.file_path
-        println(thumbPath)
         
-        var image : UIImage!
-        let file_name = poi.file_path.componentsSeparatedByString("/")[1]
-        
-        //画像なら取得，動画なら適当な画像
-        let file_type = file_name.componentsSeparatedByString(".")[1]
-        if file_type == "jpg" {
-            let url = NSURL(string: "\(Settings.serverURL)/\(file_name)")
-            let mediaData :NSData = NSData(contentsOfURL: url!)!
-            image = UIImage(data:mediaData)
-        } else if file_type == "mp4" {
-            image = UIImage(named: "mthumb")
-        }
-        
-        if file_type == "jpg" || file_type == "mp4" {
-            let thumb : SKSpriteNode = SKSpriteNode(texture: SKTexture(image: image), size: CGSizeMake(200, 150))
-            thumb.zPosition = 10
-            thumb.position = CGPointMake(0 , -100)
-            node.addChild(thumb)
+        if ( poi.file_path != "") {
+            let thumbPath = poi.file_path
+            println(thumbPath)
+            
+            var image : UIImage!
+            
+            let file_name = poi.file_path.componentsSeparatedByString("/")[1]
+            
+            //画像なら取得，動画なら適当な画像
+            let file_type = file_name.componentsSeparatedByString(".")[1]
+            if file_type == "jpg" {
+                let url = NSURL(string: "\(Settings.serverURL)/\(file_name)")
+                let mediaData :NSData = NSData(contentsOfURL: url!)!
+                image = UIImage(data:mediaData)
+            } else if file_type == "mp4" {
+                image = UIImage(named: "mthumb")
+            }
+            
+            if file_type == "jpg" || file_type == "mp4" {
+                let thumb : SKSpriteNode = SKSpriteNode(texture: SKTexture(image: image), size: CGSizeMake(200, 150))
+                thumb.zPosition = 10
+                thumb.position = CGPointMake(0 , -100)
+                node.addChild(thumb)
+            }
         }
         
         //シーンにバブルを追加する
